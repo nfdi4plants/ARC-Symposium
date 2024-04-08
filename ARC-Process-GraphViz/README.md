@@ -9,6 +9,13 @@ headingDivider:
 
 # ARC Process GraphViz
 
+## Example ARC
+
+For test purposes
+
+https://git.nfdi4plants.org/brilator/ARC-Process-GraphViz-Example
+
+
 ## Goal
 
 - Visualize flow of (experimental) samples / processes in an ARC
@@ -134,7 +141,7 @@ subgraph s2["study 2"]
   end
 end
 
-subgraph a1["assay 1"]
+subgraph a2["assay 2"]
   subgraph pF["processF"]
     sample4-D --> sample4-F
     sample5-D --> sample5-F
