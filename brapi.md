@@ -29,15 +29,9 @@ isa-->etl
 brapi-->consumer
 ```
 
+## References 
 
-## How is task connected to ARC?
-
-Support ARC as input format
-
-## What ARC related tooling is used?
-
-ARCtrl
-
-## What are the gains drawn from the process model?
-
-n.a.
+- [Website](https://mira.ipk-gatersleben.de)
+- [Demonstrator](https://mira.ipk-gatersleben.de/bridge)
+- [Documentation](https://mira-server.rtfd.io/)
+- [Github Repo](https://github.com/IPK-BIT/mira)
