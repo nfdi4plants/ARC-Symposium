@@ -1,0 +1,27 @@
+Plant Material and Growth Conditions
+
+Plants:
+  - Species: Talinum fruticosum
+  - Age: 28-d-old
+
+Growth Chamber
+  - 12 h light (30°C, 37% relative humidity)/12 h dark (22°C)
+  - 425 µEinstein
+
+Drought treatment: 
+  - no water for 12 days
+  - re-water for 2 days
+
+Sampling:
+  - Leaves: topmost mature unshaded leaves, ca. 3–4.5 cm (see pictures)
+  - shock-frozen in liquid N2
+
+drought samples (CAM)
+  - DB_097
+  - DB_099
+  - DB_103
+
+re-watered samples (C3)
+DB_161
+DB_163
+DB_165
