@@ -6,7 +6,6 @@ headingDivider:
 - 3
 ---
 
-
 # ARC Process GraphViz
 
 ## Example ARC
@@ -94,7 +93,6 @@ p6 --> p11
 
 ```
 
-
 ### Level 3 ("Sample / data item" Level)
 
 ```mermaid
@@ -157,14 +155,7 @@ subgraph w1["workflow 1"]
   end
 end
 
-
 ```
-
-
-
-
-
-
 
 ## Code base
 
@@ -177,7 +168,14 @@ end
    3. Plotly
 
 
-## 
+## Viz ideas
+
+- directed acyclic graph
+- nodes = Study / Assay
+  - subnode = StudyProcesses / AssayProcesses
+    - subsubnode = Sample
+- Nodes = sample / data items
+  - edges = processes
 
 
 ## Additional / Future
