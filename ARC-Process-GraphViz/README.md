@@ -162,7 +162,8 @@ end
 2. Visualize / Graph
    1. Cytoscape, Cy.js
    2. Obsidian
-   3. Plotly / Plotly-Cytoscape
+   3. sankey diagram
+   4. Plotly / Plotly-Cytoscape
 
 
 ## Viz ideas
@@ -173,7 +174,8 @@ end
 - nodes = Study / Assay
   - subnode = StudyProcesses / AssayProcesses
     - subsubnode = Sample
-
+- edge-size
+  - map to number of samples
 
 ## Additional / Future
 
@@ -218,3 +220,6 @@ sample6-D | assay2:processF | sample6-F
 
 1. unique IDs
 2. relative paths / references across the ARC studies / assays
+3. process names
+   1. fallback: sheet name of study / assay workbooks
+   2. additional detail: Protocol REF
