@@ -1,10 +1,11 @@
 ---
-# marp: true
+marp: true
 headingDivider:
 - 1
 - 2
 - 3
 ---
+
 
 # ARC Process GraphViz
 
@@ -12,7 +13,7 @@ headingDivider:
 
 For test purposes
 
-https://git.nfdi4plants.org/brilator/ARC-Process-GraphViz-Example
+https://git2.nfdi4plants.org/brilator/ARC-Process-GraphViz-Example
 
 
 ## Goal
@@ -26,7 +27,7 @@ https://git.nfdi4plants.org/brilator/ARC-Process-GraphViz-Example
 
 ### Level 1 ("ISA registration" Level)
 
-```mermaid
+<div class="mermaid" style="min-width: 480px; max-width: 960px; min-height: 360px;max-height: 600px;">
 graph LR
 
 i["ARC(Investigation)"]
@@ -46,12 +47,11 @@ s1 --> a1
 s2 --> a2
 s2 --> a3
 s3 --> a3
-
-```
+</div>
 
 ### Level 2 ("Process" Level)
 
-```mermaid
+<div class="mermaid" style="min-width: 480px; max-width: 960px; min-height: 360px;max-height: 600px;">
 graph LR
 
 i["ARC(Investigation)"]
@@ -89,13 +89,11 @@ i --> s3
 p4 --> p9
 p4 --> p11
 p6 --> p11
-
-
-```
+</div>
 
 ### Level 3 ("Sample / data item" Level)
 
-```mermaid
+<div class="mermaid" style="min-width: 480px; max-width: 960px; min-height: 360px;max-height: 1000px;">
 graph LR
 
 i["ARC(Investigation)"]
@@ -154,8 +152,7 @@ subgraph w1["workflow 1"]
     sample6-F --> dataFile1
   end
 end
-
-```
+</div>
 
 ## Code base
 
@@ -165,20 +162,59 @@ end
 2. Visualize / Graph
    1. Cytoscape, Cy.js
    2. Obsidian
-   3. Plotly
+   3. Plotly / Plotly-Cytoscape
 
 
 ## Viz ideas
 
 - directed acyclic graph
+- Nodes = sample / data items
+  - edges = processes
 - nodes = Study / Assay
   - subnode = StudyProcesses / AssayProcesses
     - subsubnode = Sample
-- Nodes = sample / data items
-  - edges = processes
 
 
 ## Additional / Future
 
 - computational workflows
 
+## Data ingest
+
+1. Read ARC
+2. List processes (ignore whether study or assay)
+3. List input / output IDs (sample / data items)
+4. Find overlapping items
+5. Assign process
+
+
+## Node-edge table
+
+input | process | output
+------|---------|-------
+sample0 | study1:processA | sample0-A
+sample1 | study1:processA | sample1-A
+sample2 | study1:processA | sample2-A
+sample0-A | study1:processB | sample0-B
+sample1-A | study1:processB | sample1-B
+sample2-A | study1:processB | sample2-B
+sample4 | study2:processC | sample4-C
+sample5 | study2:processC | sample5-C
+sample6 | study2:processC | sample6-C
+sample7 | study2:processC | sample7-C
+sample8 | study2:processC | sample8-C
+sample9 | study2:processC | sample9-C
+sample4-C | study2:processD | sample4-D
+sample5-C | study2:processD | sample5-D
+sample6-C | study2:processD | sample6-D
+sample7 | study2:processE | sample7-E
+sample8 | study2:processE | sample8-E
+sample9 | study2:processE | sample9-E
+sample4-D | assay2:processF | sample4-F
+sample5-D | assay2:processF | sample5-F
+sample6-D | assay2:processF | sample6-F
+
+## Assumptions / challenges
+
+1. unique IDs
+2. relative paths / references across the ARC studies / assays
