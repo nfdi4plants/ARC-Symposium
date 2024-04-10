@@ -165,7 +165,6 @@ end
    3. sankey diagram
    4. Plotly / Plotly-Cytoscape
 
-
 ## Viz ideas
 
 - directed acyclic graph
@@ -176,6 +175,9 @@ end
     - subsubnode = Sample
 - edge-size
   - map to number of samples
+- display contributor info
+  - ISA contacts
+  - git blame
 
 ## Additional / Future
 
