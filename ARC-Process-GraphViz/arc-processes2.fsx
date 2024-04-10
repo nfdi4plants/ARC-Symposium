@@ -7,6 +7,7 @@ open ARCtrl.ISA
 open ARCtrl.QueryModel
 
 let datahubPath = "/Users/dominikbrilhaus/datahub-dataplant/"
+
 let arcInHubPath = "ARC-Process-GraphViz-Example"
 let arcPath = datahubPath + arcInHubPath
 let arc = ARC.load(arcPath)
@@ -66,17 +67,20 @@ let getEdges (processes : ArcTables) : string list =
                 if isPreviousProcessOf p1 p2 then
                     sprintf "%s --> %s" p1.Name p2.Name
     ]
+    
+
+let getInvToStudyEdges (inv : ArcInvestigation) : string list = 
+    [
+        for s in inv.Studies do
+            sprintf "%s --> %s" inv.Identifier s.Identifier
+    ]
+
+getInvToStudyEdges arc.ISA.Value
 
 
 getEdges arc.ISA.Value.ArcTables
+|> List.append (getInvToStudyEdges arc.ISA.Value)
 // |> fun sg -> sg @ getEdges arc.ISA.Value.ArcTables
 |> List.append (collectSubGraphs arc.ISA.Value)
 |> mermaidGraphLR
-|> fun c -> System.IO.File.WriteAllLines("./test.md", c)
-
-
-
-
-
-    
-
+|> fun c -> System.IO.File.WriteAllLines(arcPath + "/arc-processes-mermaid.md", c)
