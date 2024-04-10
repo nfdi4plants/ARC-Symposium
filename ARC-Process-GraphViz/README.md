@@ -1,11 +1,3 @@
----
-marp: true
-headingDivider:
-- 1
-- 2
-- 3
----
-
 
 # ARC Process GraphViz
 
@@ -27,7 +19,7 @@ https://git2.nfdi4plants.org/brilator/ARC-Process-GraphViz-Example
 
 ### Level 1 ("ISA registration" Level)
 
-<div class="mermaid" style="min-width: 480px; max-width: 960px; min-height: 360px;max-height: 600px;">
+```mermaid
 graph LR
 
 i["ARC(Investigation)"]
@@ -47,11 +39,11 @@ s1 --> a1
 s2 --> a2
 s2 --> a3
 s3 --> a3
-</div>
+```
 
 ### Level 2 ("Process" Level)
 
-<div class="mermaid" style="min-width: 480px; max-width: 960px; min-height: 360px;max-height: 600px;">
+```mermaid
 graph LR
 
 i["ARC(Investigation)"]
@@ -89,11 +81,11 @@ i --> s3
 p4 --> p9
 p4 --> p11
 p6 --> p11
-</div>
+```
 
 ### Level 3 ("Sample / data item" Level)
 
-<div class="mermaid" style="min-width: 480px; max-width: 960px; min-height: 360px;max-height: 1000px;">
+```mermaid
 graph LR
 
 i["ARC(Investigation)"]
@@ -152,7 +144,7 @@ subgraph w1["workflow 1"]
     sample6-F --> dataFile1
   end
 end
-</div>
+```
 
 ## Code base
 

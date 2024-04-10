@@ -11,7 +11,7 @@ direction TD
     assay --> "0..n" workflow
 
     process "0..n" --* study
-    assayProcess "0..n" --* assay
+    process "0..n" --* assay
 
     inputNode "1" -- process
     process --> "1" outputNode
@@ -75,4 +75,3 @@ style process fill: #4FB3D9
     
 
 ```
-
