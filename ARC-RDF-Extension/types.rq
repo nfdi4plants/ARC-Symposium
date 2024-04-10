@@ -1,0 +1,7 @@
+# Find all types for which instances are present.
+SELECT ?o
+{
+    ?s a ?o
+    FILTER(STRSTARTS(STR(?o), "http://www.openmicroscopy.org/"))
+}
+LIMIT 100
