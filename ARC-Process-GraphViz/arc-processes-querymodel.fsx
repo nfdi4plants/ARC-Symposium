@@ -21,15 +21,14 @@ type InOutMapping = {
 
 let inOutMappings = 
     qi.ArcTables.Tables
-    |> Array.ofSeq
-    |> Array.map (fun p -> 
+    |> List.ofSeq
+    |> List.map (fun p -> 
         p.Rows 
         |> List.map (fun r -> r.Input, r.Output)
         |> List.distinct
         |> List.map (fun x -> {In = fst x; Out = snd x; Process = p.Name})
-        |> Array.ofSeq
         ) 
-    |> Array.concat 
+    |> List.concat 
 
 type ProcessToProcess = {
     InProcess : string
@@ -38,17 +37,17 @@ type ProcessToProcess = {
 
 let InputToProcessLookUp = 
     inOutMappings
-    |> Array.map (fun x -> x.In,x.Process)
-    |> Map.ofArray
+    |> List.map (fun x -> x.In,x.Process)
+    |> Map.ofList
 
 let processToProcess =
     inOutMappings
-    |> Array.choose (fun x -> 
+    |> List.choose (fun x -> 
             match InputToProcessLookUp |> Map.tryFind x.Out with 
             | Some outPutProcess ->  
                 Some {InProcess=x.Process;OutProcess=outPutProcess}
             | None -> None
             
         )
-    |> Array.distinct
+    |> List.distinct
 
