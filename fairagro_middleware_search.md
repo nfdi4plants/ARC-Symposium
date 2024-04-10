@@ -90,7 +90,7 @@ The differences are:
 
 
 
-## (2) FAIRagro centra search service
+## (2) FAIRagro central search service
 - backgrounds:
 	- basic metadata search functionality based on The Dataverse Project
 	- further requirement: offering variable catalog searches (e.g. via Mica, as in NFDI4Health)
@@ -100,4 +100,4 @@ The differences are:
 - tested the integration of ARC-JSON files in Dataverse. Details:
 	- Dataverse uses a custom TSV-based format for defining metadata blocks, and for loading dataset metadata
 	- converters from JSON and JSON-Schema to Dataverse-TSVs are available (from NFDI4Health)
-	- converters were tested using ARC-JSON metadata and the ISA JSON Schema (unfinished as of 10.4., 11:00)
+	- as a proof-of-concept, converters were used to load parts of the ISA JSON Schema as a Dataverse metadata block, and ARC-JSON metadata as a corresponding Dataverse dataset.
