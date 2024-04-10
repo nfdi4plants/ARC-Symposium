@@ -11,7 +11,6 @@ let datahubPath = "/Users/dominikbrilhaus/datahub-dataplant/"
 let arcInHubPath = "ARC-Process-GraphViz-Example"
 let arcPath = datahubPath + arcInHubPath
 let arc = ARC.load(arcPath)
-
 let table1 = arc.ISA.Value.ArcTables[0]
 let table2 = arc.ISA.Value.ArcTables[1]
 
@@ -28,22 +27,26 @@ let assayToSubgraph (assay: ArcAssay) : string list =
     [
         sprintf "subgraph %s" assay.Identifier
         for p in assay do
-            "\t" + p.Name        
+            "  " + p.Name        
         "end"
+        ""
     ]
     
 let studyToSubgraph (study: ArcStudy) : string list =
     [
         sprintf "subgraph %s" study.Identifier
         for p in study do
-            "\t" + p.Name        
+            "  " + p.Name        
         "end"
+        ""
     ]
 
 let mermaidGraphLR (c : string list) = 
     [
         "```mermaid"
+        ""
         "graph LR"
+        ""
         yield! c
         "```"
     ]
@@ -57,6 +60,7 @@ let collectSubGraphs (inv : ArcInvestigation) : string list =
             yield! studyToSubgraph study
         for assay in inv.Assays do
             yield! assayToSubgraph assay
+        ""
     ]
 
 let getEdges (processes : ArcTables) : string list =
@@ -66,6 +70,7 @@ let getEdges (processes : ArcTables) : string list =
 
                 if isPreviousProcessOf p1 p2 then
                     sprintf "%s --> %s" p1.Name p2.Name
+        ""
     ]
     
 
@@ -73,6 +78,7 @@ let getInvToStudyEdges (inv : ArcInvestigation) : string list =
     [
         for s in inv.Studies do
             sprintf "%s --> %s" inv.Identifier s.Identifier
+        ""
     ]
 
 getInvToStudyEdges arc.ISA.Value
