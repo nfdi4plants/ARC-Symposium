@@ -1,0 +1,95 @@
+{
+    "@context": {
+        "@idr": "https://idr.openmicroscopy.org/",
+        "@ome": "http://www.openmicroscopy.org/rdf/2016-06/ome_core/",
+        "@ome-xml": "http://www.openmicroscopy.org/Schemas/OME/2016-06#",
+        "@omero": "http://www.openmicroscopy.org/TBD/omero/",
+        "@wd": "http://www.wikidata.org/prop/direct/"
+    },
+    "@graph": [
+        {
+            "@id": "https://idr.openmicroscopy.org/Pixels/1461",
+            "@ome:PhysicalSizeX": {
+                "@id": "_:N1445440ecdc84ad29b8ac20b59fca6e7"
+            },
+            "@ome:PhysicalSizeY": {
+                "@id": "_:Ndbe2a754739441a591be10b62ab16a14"
+            },
+            "@ome:SignificantBits": 16,
+            "@ome:SizeC": 2,
+            "@ome:SizeT": 1,
+            "@ome:SizeX": 1376,
+            "@ome:SizeY": 1040,
+            "@ome:SizeZ": 16,
+            "@ome:Type": {
+                "@id": "https://idr.openmicroscopy.org/PixelsType/6"
+            },
+            "@omero:sha1": "710f5ba022e4af5da00cf29b766bcaaf80dd71bc",
+            "@type": "@ome-xml:Pixels",
+            "http://purl.org/dc/terms/isPartOf": {
+                "@id": "https://idr.openmicroscopy.org/Image/1461"
+            }
+        },
+        {
+            "@id": "_:N1445440ecdc84ad29b8ac20b59fca6e7",
+            "@ome:Symbol": "µm",
+            "@ome:Unit": "MICROMETER",
+            "@ome:Value": 0.1076,
+            "@type": "TBD#LengthI"
+        },
+        {
+            "@id": "_:Ndbe2a754739441a591be10b62ab16a14",
+            "@ome:Symbol": "µm",
+            "@ome:Unit": "MICROMETER",
+            "@ome:Value": 0.1076,
+            "@type": "TBD#LengthI"
+        },
+        {
+            "@id": "https://idr.openmicroscopy.org/Image/1461",
+            "@ome:AcquisitionDate": 1298405218000,
+            "@ome:Name": "X_110222_S1 [Well A-1; Field #1]",
+            "@ome:annotation": {
+                "@id": "https://idr.openmicroscopy.org/MapAnnotation/6618539"
+            },
+            "@omero:series": 0,
+            "@type": "@ome-xml:Image",
+            "http://purl.org/dc/terms/hasPart": {
+                "@id": "https://idr.openmicroscopy.org/Pixels/1461"
+            }
+        },
+        {
+            "@id": "https://idr.openmicroscopy.org/MapAnnotation/6618539",
+            "@ome:Map": [
+                {
+                    "@id": "_:N8d9c0ef5fe764ae8813a19e2bad9f5a4"
+                },
+                {
+                    "@id": "_:N8c4c7a80eec94a38bf545a2a368cd99b"
+                },
+                {
+                    "@id": "_:Nbe5bb073a48d4779b1e9a9e2bb2ec96b"
+                }
+            ],
+            "@ome:Namespace": "openmicroscopy.org/omero/bulk_annotations",
+            "@type": [
+                "http://www.wikidata.org/entity/Q35120",
+                "@ome-xml:MapAnnotation"
+            ]
+        },
+        {
+            "@id": "_:N8d9c0ef5fe764ae8813a19e2bad9f5a4",
+            "@ome:Key": "Control Type",
+            "@ome:Value": "empty well"
+        },
+        {
+            "@id": "_:N8c4c7a80eec94a38bf545a2a368cd99b",
+            "@ome:Key": "Channels",
+            "@ome:Value": "GFP:endogenous alpha tubulin 2;Cascade blue:growth media"
+        },
+        {
+            "@id": "_:Nbe5bb073a48d4779b1e9a9e2bb2ec96b",
+            "@ome:Key": "Replicate Group",
+            "@ome:Value": "1"
+        }
+    ]
+}

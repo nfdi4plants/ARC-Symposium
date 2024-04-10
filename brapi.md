@@ -29,9 +29,19 @@ isa-->etl
 brapi-->consumer
 ```
 
+## Goals for the ARC Symposium
+
+[x] Create a `ro-crate.json` from an ARC \
+[x] Ingest the `ro-crate.json` in an ETL process to an internal data model based on BrAPI ER schema \
+[x] Implement examplary endpoint on this data model
+
+## Results
+
+The `ro_crate.json` was created for an exemplary ARC dataset (https://git.nfdi4plants/feser/test-dataset). Currently, the ETL process is being implemented to ingest the investigation object, which corresponds to the Trial entity in BrAPI. To showcase a proof of concept, `GET /trials` and `GET /trials/{trialDbId}` have been implemented. The next steps will complete the ingestion and implementation of the remaining BrAPI endpoints. As the switch to preprocessing through an ETL process required a reimplementation of MIRA, ISA Tab support will be added later.
+
 ## References 
 
 - [Website](https://mira.ipk-gatersleben.de)
 - [Demonstrator](https://mira.ipk-gatersleben.de/bridge)
 - [Documentation](https://mira-server.rtfd.io/)
-- [Github Repo](https://github.com/IPK-BIT/mira)
+- [Github Repository](https://github.com/IPK-BIT/mira)
