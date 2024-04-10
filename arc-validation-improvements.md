@@ -5,13 +5,13 @@ This document describes the current state of the ARC validation pipeline in Data
 ## Flowchart
 
 ```mermaid
-flowchart TD;
+flowchart LR;
 
 subgraph mandatory[AutoDevOps Pipeline]
     direction LR
-    arcjson(Create ISA ARC JSON)
-    qrgen(Check validation_packages.yml)
-    qrtrigger(Generate child pipeline/jobs)
+    arcjson(Create ISA\nARC JSON)
+    qrgen(Check\nyml)
+    qrtrigger(Generate child\npipeline/jobs)
     arcjson --> qrgen
     qrgen -- exists --> qrtrigger
 end
@@ -35,13 +35,11 @@ subgraph optional[Dynamic Child Pipeline]
         pnbadge(Create result badge)
         pnpublish(Publication link)
         pntest(Link to tests)
-        pnbadge--   "#9989;"   --> pnpublish
+        pnbadge--   "#9989;"  --> pnpublish
         pnbadge--   #10060;   --> pntest
         pnvalidate --> pnbadge
     end
-    
 end
+qrtrigger --> optional
 
-qrtrigger --> p1validate
-qrtrigger --> pnvalidate
 ```
