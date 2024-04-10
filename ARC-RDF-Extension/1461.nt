@@ -1,0 +1,43 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ome: <http://www.openmicroscopy.org/rdf/2016-06/ome_core/> .
+@prefix ome-xml: <http://www.openmicroscopy.org/Schemas/OME/2016-06#> .
+@prefix omero: <http://www.openmicroscopy.org/TBD/omero/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://idr.openmicroscopy.org/Image/1461> a ome-xml:Image ;
+    dcterms:hasPart <https://idr.openmicroscopy.org/Pixels/1461> ;
+    omero:series 0 ;
+    ome:AcquisitionDate 1298405218000 ;
+    ome:Name "X_110222_S1 [Well A-1; Field #1]" ;
+    ome:annotation <https://idr.openmicroscopy.org/MapAnnotation/6618539> .
+
+<https://idr.openmicroscopy.org/MapAnnotation/6618539> a ome-xml:MapAnnotation,
+        <http://www.wikidata.org/entity/Q35120> ;
+    ome:Map [ ome:Key "Control Type" ;
+            ome:Value "empty well" ],
+        [ ome:Key "Replicate Group" ;
+            ome:Value "1" ],
+        [ ome:Key "Channels" ;
+            ome:Value "GFP:endogenous alpha tubulin 2;Cascade blue:growth media" ] ;
+    ome:Namespace "openmicroscopy.org/omero/bulk_annotations" .
+
+<https://idr.openmicroscopy.org/Pixels/1461> a ome-xml:Pixels ;
+    dcterms:isPartOf <https://idr.openmicroscopy.org/Image/1461> ;
+    omero:sha1 "710f5ba022e4af5da00cf29b766bcaaf80dd71bc" ;
+    ome:PhysicalSizeX [ a <TBD#LengthI> ;
+            ome:Symbol "µm" ;
+            ome:Unit "MICROMETER" ;
+            ome:Value 1.076e-01 ] ;
+    ome:PhysicalSizeY [ a <TBD#LengthI> ;
+            ome:Symbol "µm" ;
+            ome:Unit "MICROMETER" ;
+            ome:Value 1.076e-01 ] ;
+    ome:SignificantBits 16 ;
+    ome:SizeC 2 ;
+    ome:SizeT 1 ;
+    ome:SizeX 1376 ;
+    ome:SizeY 1040 ;
+    ome:SizeZ 16 ;
+    ome:Type <https://idr.openmicroscopy.org/PixelsType/6> .
+
+

@@ -1,0 +1,8 @@
+# For a given type, list valid strings for each instance.
+SELECT ?s ?o
+{
+    ?s a <http://www.openmicroscopy.org/Schemas/OME/2016-06#Image>.
+    ?s ?p ?o.
+    FILTER ( datatype(?o) = <http://www.w3.org/2001/XMLSchema#string>) 
+}
+LIMIT 100
