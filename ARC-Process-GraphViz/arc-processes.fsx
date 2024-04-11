@@ -36,3 +36,9 @@ let processTable =
         ]
         |> Frame.ofColumns
     ]
+
+processTable
+|> List.mapi (fun i t -> 
+    t |> Frame.mapRowKeys (fun j -> i, j)  
+)
+|> Frame.mergeAll
