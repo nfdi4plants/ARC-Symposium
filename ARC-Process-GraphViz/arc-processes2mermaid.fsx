@@ -1,27 +1,33 @@
-#r "nuget: ARCtrl.NET, 1.1.0"
-#r "nuget: ARCtrl.QueryModel, 1.0.5"
+// Script to write a minimal markdown file with a mermaid graph
+// that displays an ARC's connections of ISA processes
+// from ARC investigation through studies and assays
+
+// Dependencies
+
+// #r "nuget: ARCtrl.NET, 1.1.0"
+// #r "nuget: ARCtrl.QueryModel, 1.0.5"
 
 open ARCtrl.NET
 open ARCtrl
 open ARCtrl.ISA
 open ARCtrl.QueryModel
 
+// Load ARC
 let datahubPath = "/Users/dominikbrilhaus/datahub-dataplant/"
 
 let arcInHubPath = "ARC-Process-GraphViz-Example"
 let arcPath = datahubPath + arcInHubPath
 let arc = ARC.load(arcPath)
-let table1 = arc.ISA.Value.ArcTables[0]
-let table2 = arc.ISA.Value.ArcTables[1]
 
+// Test wether one process precedes another
+// based on min 1 intersecting Input/Output reference
 
 let isPreviousProcessOf (processA: ArcTable) (processB: ArcTable) : bool = 
     Set.intersect (set processA.OutputNames) (set processB.InputNames)
-    |> Seq.length 
+    |> Seq.length
     |> fun x -> x > 0
 
-isPreviousProcessOf table1 table2
-
+// Write assay processes to a mermaid subgraph (only nodes, no edges)
 
 let assayToSubgraph (assay: ArcAssay) : string list =
     [
@@ -31,7 +37,9 @@ let assayToSubgraph (assay: ArcAssay) : string list =
         "end"
         ""
     ]
-    
+
+// Write study processes to a mermaid subgraph (only nodes, no edges)
+
 let studyToSubgraph (study: ArcStudy) : string list =
     [
         sprintf "subgraph %s" study.Identifier
@@ -41,6 +49,7 @@ let studyToSubgraph (study: ArcStudy) : string list =
         ""
     ]
 
+// Wrap strings in a left-to-right mermaid graph
 let mermaidGraphLR (c : string list) = 
     [
         "```mermaid"
@@ -51,9 +60,7 @@ let mermaidGraphLR (c : string list) =
         "```"
     ]
 
-let assay1 = arc.ISA.Value.Assays[0]
-let study1 = arc.ISA.Value.Studies[0]
-
+// Collect all studies and assays of an ARC as mermaid subgraphs
 let collectSubGraphs (inv : ArcInvestigation) : string list = 
     [
         for study in inv.Studies do
@@ -63,6 +70,7 @@ let collectSubGraphs (inv : ArcInvestigation) : string list =
         ""
     ]
 
+// Get process-to-process edges for mermaid
 let getEdges (processes : ArcTables) : string list =
     [
         for p1 in processes do
@@ -73,7 +81,7 @@ let getEdges (processes : ArcTables) : string list =
         ""
     ]
     
-
+// Get investigation-to-study edges for mermaid
 let getInvToStudyEdges (inv : ArcInvestigation) : string list = 
     [
         for s in inv.Studies do
@@ -81,12 +89,10 @@ let getInvToStudyEdges (inv : ArcInvestigation) : string list =
         ""
     ]
 
-getInvToStudyEdges arc.ISA.Value
-
+// Put everything together and locally write to markdown in that ARC
 
 getEdges arc.ISA.Value.ArcTables
 |> List.append (getInvToStudyEdges arc.ISA.Value)
-// |> fun sg -> sg @ getEdges arc.ISA.Value.ArcTables
 |> List.append (collectSubGraphs arc.ISA.Value)
 |> mermaidGraphLR
 |> fun c -> System.IO.File.WriteAllLines(arcPath + "/arc-processes-mermaid.md", c)
