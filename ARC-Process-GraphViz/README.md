@@ -13,6 +13,7 @@
 - [Node-edge table](#node-edge-table)
 - [Assumptions / challenges](#assumptions--challenges)
 - [Model notes](#model-notes)
+- [Setup (ana)conda for python scripts](#setup-anaconda-for-python-scripts)
 
 
 ## Example ARC
@@ -312,5 +313,40 @@ style study fill: #B4CE82
 style assay fill: #FFC000
 style process fill: #4FB3D9
     
+```
 
+## Setup (ana)conda for python scripts
+
+1. Store as `environment.yml`:
+
+```yml
+name: arc-process-graph
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python=3.12
+  - pip:
+    - arctrl
+    - fsspreadsheet
+    - dash
+    - dash_cytoscape
+```
+
+2. Create conda environment
+
+```bash
+conda env create -f environment.yml
+```
+
+3. Activate conda environment
+
+```bash
+conda activate arc-process-graph
+```
+
+4. Deactivate conda environment
+
+```bash
+conda deactivate arc-process-graph
 ```
