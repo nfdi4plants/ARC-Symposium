@@ -1,6 +1,21 @@
 
 # ARC Process GraphViz
 
+- [Example ARC](#example-arc)
+- [Goal](#goal)
+  - [Level 1 ("ISA registration" Level)](#level-1-isa-registration-level)
+  - [Level 2 ("Process" Level)](#level-2-process-level)
+  - [Level 3 ("Sample / data item" Level)](#level-3-sample--data-item-level)
+- [Code base](#code-base)
+- [Viz ideas](#viz-ideas)
+- [Additional / Future](#additional--future)
+- [Data ingest](#data-ingest)
+- [Node-edge table](#node-edge-table)
+- [Assumptions / challenges](#assumptions--challenges)
+- [Model notes](#model-notes)
+- [Setup (ana)conda for python scripts](#setup-anaconda-for-python-scripts)
+
+
 ## Example ARC
 
 For test purposes
@@ -217,3 +232,121 @@ sample6-D | assay2:processF | sample6-F
 3. process names
    1. fallback: sheet name of study / assay workbooks
    2. additional detail: Protocol REF
+
+
+
+## Model notes
+
+trying to model / keep notes of what to display where
+
+
+```mermaid
+
+classDiagram
+    
+direction TD
+
+    investigation --> "0..n" study
+    study --> "0..n" assay
+    assay --> "0..n" workflow
+
+    process "0..n" --* study
+    process "0..n" --* assay
+
+    inputNode "1" -- process
+    process --> "1" outputNode
+
+    inputNode <-- "0..n" inputItem
+    outputNode <-- "0..n" outputItem
+
+    inputItem -- outputItem
+
+    class inputItem {
+        label = 
+    }
+
+    class outputItem {
+        label = 
+    }
+
+    class study {
+        label = studyIdentifier
+        + mapFill() <= StudyOrAssayOrWorkflow
+        + mapOnClickLink() => link to study (Folder)
+        + mapOnClickUnfold() => show processes
+    }
+
+    class assay {
+        label = assayIdentifier
+        + mapFill() <= StudyOrAssayOrWorkflow
+        + mapOnClickLink() => link to assay (Folder)
+        + mapOnClickUnfold() => show processes
+    }
+
+    class process {
+        label = processTableName
+        additional label = Protocol REF
+        + mapLineSize() <= numberOfProcessedSamples (rowCount)
+        + mapOnClickLink() => link to Protocol REF (File)
+        + mapOnClickUnfold() => show InputOutput Nodes
+    }
+
+    class inputNode {
+        label = inputNode Name
+        + mapFill() <= inputType     
+    }
+
+    class outputNode {
+        label = outputNode Name
+        + mapFill() <= outputType     
+    }
+
+    class people{
+        + Investigation Contacts
+        + Study Contacts
+        + Assay Performers
+}
+
+
+style investigation fill: #2D3E50,color:#ECEBEB;
+style study fill: #B4CE82
+style assay fill: #FFC000
+style process fill: #4FB3D9
+    
+```
+
+## Setup (ana)conda for python scripts
+
+1. Store as `environment.yml`:
+
+```yml
+name: arc-process-graph
+channels:
+  - defaults
+dependencies:
+  - pip
+  - python=3.12
+  - pip:
+    - arctrl
+    - fsspreadsheet
+    - dash
+    - dash_cytoscape
+```
+
+2. Create conda environment
+
+```bash
+conda env create -f environment.yml
+```
+
+3. Activate conda environment
+
+```bash
+conda activate arc-process-graph
+```
+
+4. Deactivate conda environment
+
+```bash
+conda deactivate arc-process-graph
+```
