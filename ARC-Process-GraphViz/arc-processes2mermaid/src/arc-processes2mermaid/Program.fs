@@ -115,9 +115,9 @@ let main(args) =
             arcProcesses2mermaid i o
             1
         | None -> 
-            printfn "Outfile missing; Defaulting to `processMermaid.md` inside the ARC"
-            let o = i + "/processMermaid.md"
-            arcProcesses2mermaid i o
+            let defaultOut = i + "/processMermaid.md"
+            printfn "Outfile missing; Defaulting to %s inside the ARC" defaultOut
+            arcProcesses2mermaid i defaultOut
             1
     | None ->
         printfn "Arcpath missing"
