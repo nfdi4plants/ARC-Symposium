@@ -36,3 +36,11 @@ src/arc-processes2mermaid/bin/Debug/net8.0/arc-processes2mermaid --help
 ```bash
 src/arc-processes2mermaid/bin/Debug/net8.0/arc-processes2mermaid -a ~/datahub-dataplant/hhu-plant-biochemistry/Samuilov-2018-BOU-PSP
 ```
+
+## create self-contained executable
+
+### for macos
+
+```bash
+dotnet publish --runtime osx-x64 -p:PublishReadyToRunShowWarnings=true -p:PublishSingleFile=true
+```
