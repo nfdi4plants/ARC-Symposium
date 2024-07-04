@@ -12,6 +12,12 @@ A significant portion of the event was dedicated to collaborative hacking sessio
 
 ## Outcomes
 
+- [ARC-Process-GraphViz](/ARC-Process-GraphViz/README.md)
+- [BrAPI-Compatability](/BrAPI-Compatability/README.md)
+- [Middleware-Search](/Middleware-Search/README.md)
+- [Process-GraphViz](/Process-GraphViz/README.md)
+- [RDF-Extension](/RDF-Extension/README.md)
+- [Validation-Improvements](/Validation-Improvements/README.md)
 
 ## Conclusion
 
