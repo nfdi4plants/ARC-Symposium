@@ -46,3 +46,9 @@ graph LR
     Invenio -->|SHA256| LFS
     LFS -->|Presigned S3-URL| Invenio
 ```
+
+## Prototypical implementation
+
+During the symposium we implemented a first prototype of a LFS object resolver micro-service.
+
+https://github.com/nfdi4plants/lfs-object-resolver
