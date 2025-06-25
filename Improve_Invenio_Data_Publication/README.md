@@ -3,7 +3,7 @@ Issue of consistency of ARCs published in Invenio.
 
 The publication middleware does not currently require for the ARC to be public to trigger a publication. Thus, users can publish private ARC, which results in the link-back to the DataHub to be only available for members of the ARC. 
 
-There was a case of a user setting the ARC back to private after publishing which made the data unaccessible from the Publication page. Even if we would enforce that users must have their ARC set as public, it does not prevent the issue that a user can publish a public ARC and set it to private afterwards.
+There was a case of a user setting the ARC back to private after publishing which made the data unaccessible from the Publication page. Even if we would require ARCs to be public to allow a publication (which we don't want to!), it does not prevent the issue that a user can publish a public ARC and set it to private afterwards.
 
 ## Solution approach
 
