@@ -15,7 +15,7 @@ else:
 
 # Parse the JSON-LD file to get the metadata.
 # Load the JSON-LD file
-with open("arc-ro-crate-metadata2.json", "r", encoding="utf-8") as f:
+with open("arc-ro-crate-metadataOld.json", "r", encoding="utf-8") as f:
     data = json.load(f)
     #print(data)
 
