@@ -27,11 +27,13 @@ pubmed_id = ""
 doi = ""
 for ident in publication.get("identifier", []):
     ident_obj = next((x for x in graph if x["@id"] == ident["@id"]), {})
-    prop_id = ident_obj.get("propertyID", "")
-    if "OBI_0001617" in prop_id:
+    id_name = ident_obj.get("name", "").strip().lower()
+    if id_name == "pubmedid":
         pubmed_id = ident_obj.get("value", "")
-    elif "OBI_0002110" in prop_id:
+    elif id_name == "doi":
         doi = ident_obj.get("value", "")
+    else:
+        print("Unknown identifier type:", ident_obj)
 
 # Resolve authors
 authors = []
