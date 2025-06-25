@@ -10,7 +10,7 @@
 Within the Trait Definition File in MIAPPE we define what Observation Variable was recorded in a phenotyping experiment. The Observation Variable is build from a Trait (e.g. Plant Length or Flower Color), the Method (e.g. Measurement or Estimation) and the Scale (e.g. cm or 1:yellow;2:blue;3:red). This information needs to be available within the ARC. The Data Map expects the values to be annotated by an ontology. 
 
 ## Decision
-We will annotate the result file using a Data Map. We will link the explication to an ontology term. If not available yet, we will provide a local file containing the ontology definition for the observation variables. 
+We will annotate the result file using a Data Map. We will link the explication to an ontology term. If not available yet, we will provide a local file containing the ontology definition for the observation variables. An example is provided in [feser/tdf-example](https://git.nfdi4plants.org/feser/tdf-example)
 
 ### Data Map
 In the Data Map, we will use the Parameter[Explication] defined term to specify the Observation Variable of an ontology. The observation variable needs to define its Scale. Depending on the data file structure the selector points to the cells containing the observation values. In the MIAPPE case, we will use a long format and every row in the assay points to a row in the data file.
