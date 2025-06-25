@@ -13,3 +13,5 @@ Parsing both old and new versions of the json-ld file (arc-to-ro-crate-metadataO
 The newer version of json-ld (arc-to-ro-crate-metdataNew.json) was parsed to extract metadata. Besides few keys like 'Term Source Name' and 'Investigation Publication Status Term Source REF' it was parsed as expected. The contextual information about the metata still need to be extracted and represented in omero webclient as key-value pairs with namespaces.
 
 ### Future Work
+
+Future works involves parsing the rc-to-ro-crate-metdataNew.json file, both key-value metdata and contextual information and adding them to omero webclient metadata. The intented final goal would to be able to add this json-ld parsing mechanism as a feature to omero-rdf plugin to omero. 
