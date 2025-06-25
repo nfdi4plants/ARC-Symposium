@@ -6,4 +6,4 @@ Users that want to initiate a project following the ARC structure directly in th
 
 # Technical details
 
-Template ARCs are stored in an arc_templates group in the DataHUB: https://git.nfdi4plants.org/arc_templates. When creating a new project in the DataHUB the option "create from template" allows to select from the different ARC templates and initiate an ARC following their structure.
+Template ARCs are stored in an arc_templates group in the DataHUB: https://git.nfdi4plants.org/arc_templates. Once the implementation is finalized, when creating a new project in the DataHUB the option "create from template" allows to select from the different ARC templates and initiate an ARC following their structure.
