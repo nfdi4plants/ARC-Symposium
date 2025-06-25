@@ -35,6 +35,12 @@ Create an interactive graph that display connections between ARC files and allow
 - React
 - React Flow (Graphing library)
 
+### Integration
+
+The proposed prototype uses ARCtrl types to display a react graph view. This can be used in any environment suitable for react components, such as Swate. 
+
+It can use any supported input type from ARCtrl.
+
 ### Implementations
 
 The below code examples are very rough and do not follow DRY principles.
