@@ -5,3 +5,11 @@ In this project we explore the interoperability between OMERO and ARC via RO-Cra
 ### Methodology
 
 We first start with generating ro-crate metdata file in the json-ld format. This is usually created automatically in DataPLANT DATAHUB at the Deploy -> Package Registory -> isa_arc_json. The generated file i.e. arc-ro-crate-metadataOld.json was parsed with python's json package and read in omero webclient as key-value pair metadata. As there have been some changes in the ro-crate specification, here: [isa-ro-crate-profile](https://github.com/nfdi4plants/isa-ro-crate-profile/tree/release) , a new json-ld file named arc-ro-crate-metadataNew.json was generated and parsed using python.
+
+
+### Results and Limitations
+
+Parsing both old and new versions of the json-ld file (arc-to-ro-crate-metadataOld.json & arc-to-ro-crate-metdataNew.json) worked as expected and specific metadata for investigation was parsed and read into omero with the older json-ld file and this can be seen in the image file. The parsing the contextual metadata and adding it as metadata namespaces in OMERO was also on of the goals which was not further explored as newer version of json-ld was available.
+The newer version of json-ld (arc-to-ro-crate-metdataNew.json) was parsed to extract metadata. Besides few keys like 'Term Source Name' and 'Investigation Publication Status Term Source REF' it was parsed as expected. The contextual information about the metata still need to be extracted and represented in omero webclient as key-value pairs with namespaces.
+
+### Future Work
