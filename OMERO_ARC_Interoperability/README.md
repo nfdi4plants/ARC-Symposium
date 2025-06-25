@@ -26,7 +26,7 @@ authors:
   - name: Niraj Kandpal
     orcid: 0009-0007-5101-4786
     affiliation: 1
-  - name: Henrick Lucas Weil
+  - name: Heinrich Lukas Weil
     affiliation: 2
     orcid: 0000-0003-1945-6342
   - name: Kevin Schneider
