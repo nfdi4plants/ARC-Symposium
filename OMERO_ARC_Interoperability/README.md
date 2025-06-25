@@ -16,6 +16,10 @@ The json-ld file *arc-to-ro-crate-metdataNew.json* was read using python with js
 
 Future works involves parsing the *arc-to-ro-crate-metdataNew.json* file, both key-value metdata and contextual information and adding them to omero webclient metadata. The intented goal is to be able to add this ARC RO-crate json-ld parsing & omero upload mechanism as a ARC json-ld import feature to [omero-rdf](https://github.com/German-BioImaging/omero-rdf) plugin of OMERO. 
 
+### Miscellaneous
+
+Inside the folder you might find files and scripts with Old and New in the end of their names. This is due to the fact that there were changes in the [ISA RO-Crate profile](isa-ro-crate-profile](https://github.com/nfdi4plants/isa-ro-crate-profile/tree/release) and the files with Old ending represent the Older version and the files with New ending represent the newer version.
+
 ### Contributions
 
 authors:
