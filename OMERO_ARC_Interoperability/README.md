@@ -1,6 +1,6 @@
 #### Introduction
 
-In this project we explore the interoperability between OMERO and ARC via RO-Crate. The project involves parsing an RO-Crate file from of an ARC and adding the necessary metadata(key-value pairs) with contextual metadata into OMERO as omero key-value pairs.
+In this project we explore the interoperability between [OMERO](https://www.openmicroscopy.org/omero/) and [ARC](https://nfdi4plants.github.io/nfdi4plants.knowledgebase/core-concepts/arc/) via RO-Crate. The project involves parsing an RO-Crate file from of an ARC and adding the necessary metadata(key-value pairs) with contextual metadata into OMERO as omero key-value pairs. Here we explore simple prototype/workflow to achieve this interoperability.
 
 ### Methodology
 
@@ -14,7 +14,7 @@ The newer version of json-ld *arc-to-ro-crate-metdataNew.json* was parsed to ext
 
 ### Future Work
 
-Future works involves parsing the *arc-to-ro-crate-metdataNew.json* file, both key-value metdata and contextual information and adding them to omero webclient metadata. The intented goal is to be able to add this ARC RO-crate json-ld parsing mechanism & oemro upload mechanism as a ARC json-ld import feature to omero-rdf plugin of omero. 
+Future works involves parsing the *arc-to-ro-crate-metdataNew.json* file, both key-value metdata and contextual information and adding them to omero webclient metadata. The intented goal is to be able to add this ARC RO-crate json-ld parsing & omero upload mechanism as a ARC json-ld import feature to [omero-rdf](https://github.com/German-BioImaging/omero-rdf) plugin of omero. 
 
 ### Contributions
 
