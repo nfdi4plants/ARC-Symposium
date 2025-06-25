@@ -1,3 +1,13 @@
+---
+authors:
+  - name: Kevin Frey
+    orcid: https://orcid.org/0000-0002-8510-6810
+    affiliation: 1
+affiliations:
+  - name: Computational Systems Biology, Rheinland-Pfälzische Technische Universität Kaiserslautern-Landau, Kaiserslautern, Germany
+    index: 1
+---
+
 # Swate Graph View 
 
 ## Motivation or Explanation of the Problem
