@@ -18,4 +18,26 @@ Future works involves parsing the *arc-to-ro-crate-metdataNew.json* file, both k
 
 ### Contributions
 
-Disucssions and inputs from Henrick Lucas Weil, Kevin Schneider, Manual Feser
+authors:
+  - name: Niraj Kandpal
+    orcid: 0009-0007-5101-4786
+    affiliation: 1
+  - name: Henrick Lucas Weil
+    affiliation: 2
+    orcid: 0000-0003-1945-6342
+  - name: Kevin Schneider
+    affiliation: 2
+    orcid: 0000-0002-2198-5262
+  - name: Manual Feser
+    affiliation: 3
+    orcid: https://orcid.org/0000-0001-6546-1818
+  
+affiliations:
+  - name: CECAD Imaging Facility, University of Cologne, Cologne, Germany
+    index: 1
+  - name: Computational Systems Biology, University of Kaiserslautern-Landau, Kaiserslautern, Germany
+    index: 2
+  - name: Department of Genetics, Genomics and Informatics, The University of Tennessee Health Science Center, Memphis, TN, USA.
+    index: 3
+  - name: Leibniz-Institut für Pflanzengenetik und Kulturpflanzenforschung (IPK): Seeland, Sachsen-Anhalt, DE 
+   
