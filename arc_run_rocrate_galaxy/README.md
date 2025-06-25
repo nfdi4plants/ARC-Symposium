@@ -61,7 +61,7 @@ Additional technical challenges include:
 
 ## Example
 
-![](./graph.svg)
+![](graph.png)
 
 ## References
 
