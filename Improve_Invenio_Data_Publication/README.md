@@ -24,3 +24,21 @@ ARCitect makes sure that all files referenced in the metadata are tracked by git
 FIles annotated in the RO-Crate MUST contain all information necessary to identify the LFS 
 
 https://schema.org/MediaObject contains property `sha256`
+
+
+# Solution Sketch
+
+```mermaid
+graph LR
+    RO_Crate["RO-Crate
+    ---------------------
+    {Filename: ... }
+    {SHA256: ... }
+    ..."]
+    Invenio["Invenio Plugin"]
+    LFS["LFS-Resolver"]
+
+    RO_Crate -->|Filename, OID| Invenio
+    Invenio -->|SHA256| LFS
+    LFS -->|Presigned S3-URL| Invenio
+```
