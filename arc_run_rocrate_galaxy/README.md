@@ -1,3 +1,11 @@
+authors:
+  - name: Caroline Ott
+    orcid: [0000-0002-6601-2165](https://orcid.org/0000-0003-1512-9504)
+    affiliation: 1
+affiliations:
+  - name: Computational Systems Biology, Rheinland-Pfälzische Technische Universität Kaiserslautern-Landau, Kaiserslautern, Germany
+    index: 1
+
 # ARC Workflow Run RO-Crate Profile integration with Galaxy
 
 ## Motivation or Explanation of the Problem
