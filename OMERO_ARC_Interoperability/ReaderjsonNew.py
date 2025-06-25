@@ -1,6 +1,6 @@
 import json
 
-with open("arc-ro-crate-metadata3.json", "r", encoding="utf-8") as f:
+with open("arc-ro-crate-metadataNew.json", "r", encoding="utf-8") as f:
     crate = json.load(f)
 
 graph = crate["@graph"]
