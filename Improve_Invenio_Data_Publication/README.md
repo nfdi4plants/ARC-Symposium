@@ -1,3 +1,22 @@
+---
+authors:
+  - name: Lukas Weil
+    orcid: 
+    affiliation: DataPLANT
+  - name: Timo Mühlhaus
+    orcid: https://orcid.org/0000-0003-3925-6778
+    affiliation: DataPLANT
+  - name: Jonathan Bauer 
+    orcid: https://orcid.org/0000-0002-5624-2055
+    affiliation: DataPLANT
+  - name: Julian Weidhase
+    orcid: https://orcid.org/0009-0005-7138-4763
+    affiliation: DataPLANT
+  - name: Jonas Lukasczyk
+    orcid: 
+    affiliation: DataPLANT
+---
+
 ## Initial problem: 
 Issue of consistency of ARCs published in Invenio. 
 
