@@ -13,7 +13,7 @@ authors:
     orcid: https://orcid.org/0009-0005-7138-4763
     affiliation: DataPLANT
   - name: Jonas Lukasczyk
-    orcid: 
+    orcid: https://orcid.org/0000-0001-6650-770X
     affiliation: DataPLANT
 ---
 
