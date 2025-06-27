@@ -1,0 +1,283 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.1/context",
+    {
+      "Sample": "https://bioschemas.org/Sample",
+      "additionalProperty": "http://schema.org/additionalProperty",
+      "intendedUse": "https://bioschemas.org/intendedUse",
+      "computationalTool": "https://bioschemas.org/computationalTool",
+      "labEquipment": "https://bioschemas.org/labEquipment",
+      "reagent": "https://bioschemas.org/reagent",
+      "LabProtocol": "https://bioschemas.org/LabProtocol",
+      "executesLabProtocol": "https://bioschemas.org/executesLabProtocol",
+      "parameterValue": "https://bioschemas.org/parameterValue",
+      "LabProcess": "https://bioschemas.org/LabProcess",
+      "measurementMethod": "http://schema.org/measurementMethod",
+      "FormalParameter": "https://bioschemas.org/FormalParameter",
+      "ComputationalWorkflow": "https://bioschemas.org/ComputationalWorkflow",
+      "SoftwareSourceCode": "http://schema.org/SoftwareSourceCode",
+      "input": "https://bioschemas.org/input",
+      "output": "https://bioschemas.org/output"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "studies/Yeast/",
+      "@type": "Dataset",
+      "additionalType": "Study",
+      "identifier": "Yeast",
+      "dateModified": "2025-06-24T11:48:36.3920198"
+    },
+    {
+      "@id": "#Organization_Technische_Fakultät,_Institut_für_Informatik_(IIF)",
+      "@type": "Organization",
+      "name": "Technische Fakultät, Institut für Informatik (IIF)"
+    },
+    {
+      "@id": "https://credit.niso.org/contributor-roles/formal-analysis/",
+      "@type": "DefinedTerm",
+      "name": "Formal analysis",
+      "termCode": "https://credit.niso.org/contributor-roles/formal-analysis/"
+    },
+    {
+      "@id": "#Person_Björn_Grüning",
+      "@type": "Person",
+      "givenName": "Björn",
+      "affiliation": {
+        "@id": "#Organization_Technische_Fakultät,_Institut_für_Informatik_(IIF)"
+      },
+      "email": "gruening@informatik.uni-freiburg.de",
+      "familyName": "Grüning",
+      "jobTitle": {
+        "@id": "https://credit.niso.org/contributor-roles/formal-analysis/"
+      },
+      "address": "Georges-Köhler-Allee 106, 79110 Freiburg"
+    },
+    {
+      "@id": "https://w3id.org/workflowhub/workflow-ro-crate#galaxy",
+      "@type": "ComputerLanguage",
+      "name": "Galaxy",
+      "identifier": {
+        "@id": "https://galaxyproject.org/"
+      },
+      "url": {
+        "@id": "https://galaxyproject.org/"
+      }
+    },
+    {
+      "@id": "#FormalParameter_W_Shuffle_parameter1_position",
+      "@type": "PropertyValue",
+      "name": "Position",
+      "value": "1"
+    },
+    {
+      "@id": "#FormalParameter_W_Shuffle_parameter1_prefix",
+      "@type": "PropertyValue",
+      "name": "Prefix",
+      "value": "-i"
+    },
+    {
+      "@id": "#FormalParameter_W_Shuffle_parameter1",
+      "@type": "FormalParameter",
+      "name": "parameter1",
+      "valueRequired": true,
+      "identifier": [
+        {
+          "@id": "#FormalParameter_W_Shuffle_parameter1_position"
+        },
+        {
+          "@id": "#FormalParameter_W_Shuffle_parameter1_prefix"
+        }
+      ]
+    },
+    {
+      "@id": "#FormalParameter_W_Shuffle_outputFile1",
+      "@type": "FormalParameter",
+      "name": "outputFile1"
+    },
+    {
+      "@id": "workflows/Shuffle/ShuffleSequences.ga",
+      "@type": [
+        "File",
+        "ComputationalWorkflow",
+        "SoftwareSourceCode",
+        "LabProtocol"
+      ],
+      "additionalType": "WorkflowProtocol",
+      "creator": {
+        "@id": "#Person_Björn_Grüning"
+      },
+      "programmingLanguage": {
+        "@id": "https://w3id.org/workflowhub/workflow-ro-crate#galaxy"
+      },
+      "name": "FASTA shuffle workflow",
+      "input": {
+        "@id": "#FormalParameter_W_Shuffle_parameter1"
+      },
+      "output": {
+        "@id": "#FormalParameter_W_Shuffle_outputFile1"
+      }
+    },
+    {
+      "@id": "workflows/Shuffle/",
+      "@type": "Dataset",
+      "additionalType": "Workflow",
+      "identifier": "Shuffle",
+      "creator": {
+        "@id": "#Person_Björn_Grüning"
+      },
+      "name": "FASTA shuffle workflow",
+      "mainEntity": {
+        "@id": "workflows/Shuffle/ShuffleSequences.ga"
+      }
+    },
+    {
+      "@id": "#Organization_Department_of_Biology,_University_of_Kaiserslautern",
+      "@type": "Organization",
+      "name": "Department of Biology, University of Kaiserslautern"
+    },
+    {
+      "@id": "#Person_Caroline_Ott",
+      "@type": "Person",
+      "givenName": "Caroline",
+      "affiliation": {
+        "@id": "#Organization_Department_of_Biology,_University_of_Kaiserslautern"
+      },
+      "email": "caroline.ott@rptu.de",
+      "familyName": "Ott",
+      "additionalName": "J. V.",
+      "address": "Erwin-Schrödinger-Straße 56, Kaiserslautern, DE"
+    },
+    {
+      "@id": "studies/Yeast/resources/Yeast.fasta",
+      "@type": "File",
+      "name": "studies/Yeast/resources/Yeast.fasta",
+      "exampleOfWork": {
+        "@id": "#FormalParameter_W_Out_parameter1"
+      }
+    },
+    {
+      "@id": "#FactorValue_decoy_DB_type_shuffle_Random",
+      "@type": "PropertyValue",
+      "additionalType": "FactorValue",
+      "name": "decoy DB type shuffle",
+      "value": "Random",
+      "propertyID": "https://www.ebi.ac.uk/ols4/ontologies/ms/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1001452",
+      "valueReference": "https://bioregistry.io/NCIT:C60702",
+      "columnIndex": "0"
+    },
+    {
+      "@id": "runs/Out/Galaxy6-[Tabular-to-FASTA on data 5].fasta",
+      "@type": "File",
+      "name": "runs/Out/Galaxy6-[Tabular-to-FASTA on data 5].fasta",
+      "additionalProperty": {
+        "@id": "#FactorValue_decoy_DB_type_shuffle_Random"
+      }
+    },
+    {
+      "@id": "#ParameterValue_data_transformation_Addition",
+      "@type": "PropertyValue",
+      "additionalType": "ParameterValue",
+      "name": "data transformation",
+      "value": "Addition",
+      "propertyID": "https://www.ebi.ac.uk/ols4/ontologies/ms/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000452",
+      "columnIndex": "1"
+    },
+    {
+      "@id": "#ParameterValue_data_transformation_Subtraction",
+      "@type": "PropertyValue",
+      "additionalType": "ParameterValue",
+      "name": "data transformation",
+      "value": "Subtraction",
+      "propertyID": "https://www.ebi.ac.uk/ols4/ontologies/ms/classes/http%253A%252F%252Fpurl.obolibrary.org%252Fobo%252FMS_1000452",
+      "valueReference": "https://bioregistry.io/NCIT:C70590",
+      "columnIndex": "2"
+    },
+    {
+      "@id": "#WorkflowInvocation_Out_Shuffle_0",
+      "@type": [
+        "https://bioschemas.org/CreateAction",
+        "LabProcess"
+      ],
+      "additionalType": "WorkflowInvocation",
+      "name": "Out",
+      "object": [
+        {
+          "@id": "studies/Yeast/resources/Yeast.fasta"
+        }
+      ],
+      "result": {
+        "@id": "runs/Out/Galaxy6-[Tabular-to-FASTA on data 5].fasta"
+      },
+      "instrument": {
+        "@id": "workflows/Shuffle/ShuffleSequences.ga"
+      },
+      "executesLabProtocol": {
+        "@id": "workflows/Shuffle/ShuffleSequences.ga"
+      },
+      "parameterValue": [
+        {
+          "@id": "#ParameterValue_data_transformation_Addition"
+        },
+        {
+          "@id": "#ParameterValue_data_transformation_Subtraction"
+        }
+      ]
+    },
+    {
+      "@id": "runs/Out/",
+      "@type": "Dataset",
+      "additionalType": "Run",
+      "identifier": "Out",
+      "creator": {
+        "@id": "#Person_Caroline_Ott"
+      },
+      "description": "This run shuffles a fasta",
+      "hasPart": [
+        {
+          "@id": "studies/Yeast/resources/Yeast.fasta"
+        },
+        {
+          "@id": "runs/Out/Galaxy6-[Tabular-to-FASTA on data 5].fasta"
+        }
+      ],
+      "name": "FASTA Shuffle",
+      "mentions": {
+        "@id": "#WorkflowInvocation_Out_Shuffle_0"
+      },
+      "about": {
+        "@id": "#WorkflowInvocation_Out_Shuffle_0"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "additionalType": "Investigation",
+      "identifier": "ShuffleTest",
+      "datePublished": "2025-06-24T11:48:36.3939304",
+      "hasPart": [
+        {
+          "@id": "studies/Yeast/"
+        },
+        {
+          "@id": "workflows/Shuffle/"
+        },
+        {
+          "@id": "runs/Out/"
+        }
+      ],
+      "name": "Shuffle",
+      "license": "ALL RIGHTS RESERVED BY THE AUTHORS"
+    },
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
+      "about": {
+        "@id": "./"
+      }
+    }
+  ]
+}
