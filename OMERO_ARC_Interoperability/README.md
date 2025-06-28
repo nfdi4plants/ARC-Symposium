@@ -33,7 +33,13 @@ In this project we explore the interoperability between [OMERO](https://www.open
 
 We first start with generating ro-crate metdata file in the json-ld format. This is usually created automatically in DataPLANT DATAHUB at the Deploy -> Package Registory -> isa_arc_json. The generated file i.e. *arc-ro-crate-metadataNew.json* was read & isa investigation key-values were extracted with python's json package and read in omero webclient as key-value pair metadata using python's omero-py package. 
 
-### 
+### Attached Files
+1. **arc-ro-crate-metadataNew.json** : This is the json-ld output file for an ARC named [LarvaeDrosophila](https://git.nfdi4plants.org/NKandpal/LarvaeDrosophila) in DataPLANT's dataHUB. It contains investigation, study and assay metadata and contextual information.
+2. **ReaderjsonNew.py** : This is a python script that opens and reads the *arc-ro-crate-metadata.json* file using python's json library, it then extracts the investigation metadata values. Here, in this script we also try to compare and resolve the keys with isa.investigation.xlsx. In the end the script prints the metadata as key-value pairs.
+3. **arc-ro-crate-metadataOld.json** : This is the older version of *arc-ro-crate-metadataNew.json* above.
+4. **ReaderjsonOld.py** : This script opens and reads *arc-ro-crate-metadataOld.json* file similar to *ReaderjsonNew.py*. Additionaly it writes the metadata in omero-webclient using omero-py library.
+5. **OMERO_KV_pairs.png** : This is simply a screenshot of metadata written in omero-weblcient using *ReaderjsonOld.py* script.
+
 
 
 ### Results and Limitations
@@ -43,7 +49,7 @@ The json-ld file *arc-to-ro-crate-metdataNew.json* was read using python with js
 
 ### Future Work
 
-Future works involves parsing the *arc-to-ro-crate-metdataNew.json* file, both key-value metdata and contextual information and adding them to omero webclient metadata. The intented goal is to be able to add this ARC RO-crate json-ld parsing & omero upload mechanism as a ARC json-ld import feature to [omero-rdf](https://github.com/German-BioImaging/omero-rdf) plugin of OMERO. 
+Future works involves parsing the *arc-to-ro-crate-metdataNew.json* file, both key-value metdata and contextual information for investigation, study & assays metadata and adding them to omero webclient metadata. The intented goal will be to attain interoperability between OMERO and ARC using RO-Crate metadata. 
 
 ### Miscellaneous
 
