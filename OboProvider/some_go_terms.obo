@@ -1,0 +1,309 @@
+format-version: 1.2
+date: 04:02:2009 10:45
+saved-by: Pantelis
+auto-generated-by: OBO-Edit 2.000-beta54
+default-namespace: default_namespace
+
+[Term]
+id: TGMA:0000000
+name: hemolymph
+def: "The bloodlike fluid of invertebrates having open blood-vascular systems." [URL:http\://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1007&context=onlinedictinvertzoology "Online Dictionary of Invertebrate Zoology"]
+synonym: "haemolymph" EXACT [URL:http\://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1007&context=onlinedictinvertzoology "Online Dictionary of Invertebrate Zoology"]
+is_a: TGMA:0001824 ! portion of organism substance
+
+[Term]
+id: TGMA:0000001
+name: hemocyte
+def: "Differentiated cells with the ability to defend insects against pathogens, parasites and other foreign bodies, which entered in the hemocoel." [PubMed:PMID\:15857775]
+synonym: "haemocyte" EXACT [URL:http\://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1007&context=onlinedictinvertzoology "Online dictionary of invertebrate zoology"]
+is_a: TGMA:0001833 ! cells
+
+[Term]
+id: TGMA:0000002
+name: adult head
+def: "The anterior section (tagma) of the insect body bearing the compound eyes, antennae and mouthparts; separated from the thorax by the cervix." [ISBN:0-937548-00-6]
+comment: Fig 01,02,03,04 in ISBN:0-937548-00-6.
+is_a: TGMA:0001840 ! organism subdivision
+
+[Term]
+id: TGMA:0000003
+name: adult cranium
+def: "The sclerotized skull-like part of the head." [ISBN:0-937548-00-6]
+synonym: "head capsule" RELATED [ISBN:0-937548-00-6]
+synonym: "Kopfkapsel" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001842 ! anatomical cluster
+relationship: part_of TGMA:0000002 ! adult head
+
+[Term]
+id: TGMA:0000004
+name: adult gnathal appendages
+def: "The set of the appednages on the adult head used in feeding." [ISBN:0-937548-00-6]
+is_a: TGMA:0001842 ! anatomical cluster
+relationship: part_of TGMA:0000002 ! adult head
+
+[Term]
+id: TGMA:0000005
+name: adult neck
+def: "The membranous tube that attaches the thorax to the margins of the occipital foramen." [ISBN:0-937548-00-6]
+is_a: TGMA:0001842 ! anatomical cluster
+relationship: part_of TGMA:0000002 ! adult head
+
+[Term]
+id: TGMA:0000006
+name: adult tentorium
+def: "The pair of endoskeletal struts of the cranium formed chiefly of the fused anterior and posterior tentorial arms." [ISBN:0-937548-00-6]
+is_a: TGMA:0001835 ! compound organ component
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000007
+name: adult antenna
+def: "One of the paired anterior appendicular organs of the insect head." [ISBN:0-937548-00-6]
+comment: Fig 01 Abbr: Ant in ISBN:0-937548-00-6.
+synonym: "feeler" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001859 ! solid compound organ
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000008
+name: adult antennal socket
+def: "The membranous area of the head into which the base of the antenna is set." [ISBN:0-937548-00-6]
+comment: Fig 02,04,07,08 Abbr: AS in ISBN:0-937548-00-6.
+synonym: "antennal fossa" RELATED [ISBN:0-937548-00-6]
+synonym: "Antennengrube" RELATED [ISBN:0-937548-00-6]
+synonym: "Stirn" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001844 ! portion of tissue
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000009
+name: cephaliger
+def: "The anterior process of the cervical sclerite which articulates with the occipital condyle of the cranium." [ISBN:0-937548-00-6]
+comment: Fig 02,11,12 Abbr: Cg in ISBN:0-937548-00-6.
+synonym: "head-bearing process" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000005 ! adult neck
+
+[Term]
+id: TGMA:0000010
+name: adult scape
+def: "The first or basal segment of the antenna." [ISBN:0-937548-00-6]
+comment: Fig 02,05,06,07,08 Abbr: Sc in ISBN:0-937548-00-6.
+synonym: "antennal scape" RELATED [ISBN:0-937548-00-6]
+synonym: "antennal sclerite" RELATED [ISBN:0-937548-00-6]
+synonym: "basal antennal segment" RELATED [ISBN:0-937548-00-6]
+synonym: "basal joint" RELATED [ISBN:0-937548-00-6]
+synonym: "basal segment" RELATED [ISBN:0-937548-00-6]
+synonym: "first antennal segment" RELATED [ISBN:0-937548-00-6]
+synonym: "first segment" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001835 ! compound organ component
+relationship: part_of TGMA:0000007 ! adult antenna
+
+[Term]
+id: TGMA:0000011
+name: adult antennal pedicel
+def: "The second or subbasal segment of the antenna." [ISBN:0-937548-00-6]
+comment: Fig 01,02,04,05,07,08 Abbr: Pe in ISBN:0-937548-00-6.
+synonym: "antennal pedicel" RELATED [ISBN:0-937548-00-6]
+synonym: "Antennenbasis" RELATED [ISBN:0-937548-00-6]
+synonym: "basal bulb" RELATED [ISBN:0-937548-00-6]
+synonym: "basal joint" RELATED [ISBN:0-937548-00-6]
+synonym: "basal lobe of antenna" RELATED [ISBN:0-937548-00-6]
+synonym: "Basis der Antenne" RELATED [ISBN:0-937548-00-6]
+synonym: "scape" RELATED [ISBN:0-937548-00-6]
+synonym: "second antennal segment" RELATED [ISBN:0-937548-00-6]
+synonym: "second segment" RELATED [ISBN:0-937548-00-6]
+synonym: "tormus" RELATED [ISBN:0-937548-00-6]
+synonym: "torus" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001835 ! compound organ component
+relationship: part_of TGMA:0000007 ! adult antenna
+
+[Term]
+id: TGMA:0000012
+name: adult flagellum
+def: "The third segment of the antenna." [ISBN:0-937548-00-6]
+comment: Fig 01 Abbr: Fl in ISBN:0-937548-00-6.
+synonym: "antennal shaft" RELATED [ISBN:0-937548-00-6]
+synonym: "Geissel" RELATED [ISBN:0-937548-00-6]
+synonym: "postpedicel" RELATED [ISBN:0-937548-00-6]
+synonym: "shaft" RELATED [ISBN:0-937548-00-6]
+synonym: "third segment of antenna" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001835 ! compound organ component
+relationship: part_of TGMA:0000007 ! adult antenna
+
+[Term]
+id: TGMA:0000013
+name: flagellomere
+def: "An individual unit of the antennal flagellum." [ISBN:0-937548-00-6]
+comment: Fig 02,05,06,07,08 Abbr: Flm in ISBN:0-937548-00-6.
+synonym: "antennal joint" RELATED [ISBN:0-937548-00-6]
+synonym: "Antennenglied" RELATED [ISBN:0-937548-00-6]
+synonym: "flagellar segment" RELATED [ISBN:0-937548-00-6]
+synonym: "flagellar unit" RELATED [ISBN:0-937548-00-6]
+synonym: "Geisselglied" RELATED [ISBN:0-937548-00-6]
+synonym: "joint" RELATED [ISBN:0-937548-00-6]
+synonym: "section" RELATED [ISBN:0-937548-00-6]
+synonym: "segment" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000012 ! adult flagellum
+
+[Term]
+id: TGMA:0000014
+name: flagellar whorl
+def: "A ring of long curved setae borne by each flagellomere of the antenna; may be situated basally, medially or apically." [ISBN:0-937548-00-6]
+comment: Fig 02,05 Abbr: FW in ISBN:0-937548-00-6.
+synonym: "antennal whorl" RELATED [ISBN:0-937548-00-6]
+synonym: "basal whorl" RELATED [ISBN:0-937548-00-6]
+synonym: "bouquet" RELATED [ISBN:0-937548-00-6]
+synonym: "fan" RELATED [ISBN:0-937548-00-6]
+synonym: "hairwhorl" RELATED [ISBN:0-937548-00-6]
+synonym: "verticel" RELATED [ISBN:0-937548-00-6]
+synonym: "whorl" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000013 ! flagellomere
+
+[Term]
+id: TGMA:0000015
+name: adult antennifer
+def: "A process of the scape which articulates with the pedicel." [ISBN:0-937548-00-6]
+is_a: TGMA:0001835 ! compound organ component
+relationship: part_of TGMA:0000007 ! adult antenna
+
+[Term]
+id: TGMA:0000016
+name: adult anterior tentorial pit
+def: "An external depression in the cranium at the base of each anterior tentorial arm." [ISBN:0-937548-00-6]
+comment: Fig 02,04,06,07,08 Abbr: ATP in ISBN:0-937548-00-6.
+synonym: "anterior opening" RELATED [ISBN:0-937548-00-6]
+synonym: "anterior pit" RELATED [ISBN:0-937548-00-6]
+synonym: "frontal pit" RELATED [ISBN:0-937548-00-6]
+synonym: "invagination of the anterior arm of the tentorium" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000006 ! adult tentorium
+
+[Term]
+id: TGMA:0000017
+name: adult tentorial bar
+def: "The right or left half of the tentorium comprised mainly of the united anterior and posterior tentorial arms." [ISBN:0-937548-00-6]
+synonym: "arm of the tentorium" RELATED [ISBN:0-937548-00-6]
+synonym: "intercranial tunnel" RELATED [ISBN:0-937548-00-6]
+synonym: "intracranial tunnel" RELATED [ISBN:0-937548-00-6]
+synonym: "tentorial arm" RELATED [ISBN:0-937548-00-6]
+synonym: "Tentoriumarm" RELATED [ISBN:0-937548-00-6]
+synonym: "Tentoriumrohr" RELATED [ISBN:0-937548-00-6]
+synonym: "tubular apodeme" RELATED [ISBN:0-937548-00-6]
+synonym: "tubular passage" RELATED [ISBN:0-937548-00-6]
+synonym: "tubular tunnel" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000006 ! adult tentorium
+
+[Term]
+id: TGMA:0000018
+name: adult anterior tentorial arm
+def: "The apodeme extending posteriad from the anterior tentorial pit; its apex meeting the posterior tentorial arm at a visible fusion point; sometimes bearing a small dorsal tentorial arm; also sometimes bearing a small ventral tentorial arm." [ISBN:0-937548-00-6]
+comment: Fig 05,06,07,08,09 Abbr: ATA in ISBN:0-937548-00-6.
+synonym: "anterior arm" RELATED [ISBN:0-937548-00-6]
+synonym: "anterior arm of the tentorium" RELATED [ISBN:0-937548-00-6]
+synonym: "pretentorium" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000017 ! adult tentorial bar
+
+[Term]
+id: TGMA:0000019
+name: adult posterior tentorial arm
+def: "The apodeme extending anteriad from the posterior tentorial pit; its apex meeting the apex of the anterior tentorial arm at a visible fusion point; usually with a medial extension which may meet that of the opposite side forming a corpotentorium." [ISBN:0-937548-00-6]
+comment: Fig 05,06,07,08 Abbr: PTA in ISBN:0-937548-00-6.
+synonym: "post-tentorium" RELATED [ISBN:0-937548-00-6]
+synonym: "posterior arm" RELATED [ISBN:0-937548-00-6]
+synonym: "posterior arm of the tentorium" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000017 ! adult tentorial bar
+
+[Term]
+id: TGMA:0000020
+name: adult posterior tentorial pit
+def: "An external depression in the cranium at the base of each posterior tentorial arm; occurring at the lower end of the postoccipital suture." [ISBN:0-937548-00-6]
+comment: Fig 03,04,06,07,08 Abbr: PTP in ISBN:0-937548-00-6.
+synonym: "gular pit" RELATED [ISBN:0-937548-00-6]
+synonym: "invagination of the posterior arm of the tentorium" RELATED [ISBN:0-937548-00-6]
+synonym: "posterior opening" RELATED [ISBN:0-937548-00-6]
+synonym: "posterior pit" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000006 ! adult tentorium
+
+[Term]
+id: TGMA:0000021
+name: corpotentorium
+def: "A slender process extending from the dorsal surface near the posterior end of each posterior tentorial arm to the postoccipital ridge." [ISBN:0-937548-00-6]
+comment: Abbr: Co in ISBN:0-937548-00-6.
+synonym: "body of the tentorium" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000006 ! adult tentorium
+
+[Term]
+id: TGMA:0000022
+name: dorsal tentorial arm
+def: "A short process, when present, extending anterodorsad from the main part of the anterior tentorial arm." [ISBN:0-937548-00-6]
+comment: Abbr: DTA in ISBN:0-937548-00-6.
+synonym: "dorsal arm of the tentorium" RELATED [ISBN:0-937548-00-6]
+synonym: "dorsal spine" RELATED [ISBN:0-937548-00-6]
+relationship: part_of TGMA:0000018 ! adult anterior tentorial arm
+
+[Term]
+id: TGMA:0000023
+name: antennal suture
+def: "A line of inflection surrounding the antennal socket." [ISBN:0-937548-00-6]
+is_a: TGMA:0001828 ! anatomical line
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000024
+name: adult compound eye
+def: "A light-perceptive organ consisting of an aggregation of optic elements (ommatidia) generally located on each side of the head; the cuticular part (cornea) consists of several hundred circular corneal facets (lenses); bounded by the ocular sclerite." [ISBN:0-937548-00-6]
+comment: Fig 01,02,03,04,05,06,07,08 Abbr: CE in ISBN:0-937548-00-6.
+synonym: "eye" RELATED [ISBN:0-937548-00-6]
+synonym: "Facettenauge" RELATED [ISBN:0-937548-00-6]
+synonym: "Komplexauge" RELATED [ISBN:0-937548-00-6]
+synonym: "zusammengesetztes Auge" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001859 ! solid compound organ
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000025
+name: corneal facet
+def: "One of the lenslike divisions of the cuticular part (cornea) of the compound eye." [ISBN:0-937548-00-6]
+comment: Fig 02,03,04 Abbr: CoF in ISBN:0-937548-00-6.
+synonym: "cuticular lens" RELATED [ISBN:0-937548-00-6]
+synonym: "eye-facet" RELATED [ISBN:0-937548-00-6]
+synonym: "facet" RELATED [ISBN:0-937548-00-6]
+synonym: "facette" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001835 ! compound organ component
+relationship: part_of TGMA:0000024 ! adult compound eye
+relationship: part_of TGMA:0000042 ! ocellus
+
+[Term]
+id: TGMA:0000026
+name: coronal suture
+def: "The median longitudinal suture on the dorsal surface of the head (vertex)." [ISBN:0-937548-00-6]
+comment: Fig 02,04,07 Abbr: cs in ISBN:0-937548-00-6.
+synonym: "coronal sulcus" RELATED [ISBN:0-937548-00-6]
+synonym: "longitudinal suture" RELATED [ISBN:0-937548-00-6]
+synonym: "median coronal sulcus" RELATED [ISBN:0-937548-00-6]
+synonym: "median cranial sulcus" RELATED [ISBN:0-937548-00-6]
+synonym: "median suture of the occiput" RELATED [ISBN:0-937548-00-6]
+synonym: "stem of the epicranial suture" RELATED [ISBN:0-937548-00-6]
+is_a: TGMA:0001828 ! anatomical line
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000027
+name: coronal ridge
+def: "The cuticular ingrowth marked externally by the coronal suture." [ISBN:0-937548-00-6]
+comment: Fig 05 Abbr: CR in ISBN:0-937548-00-6.
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000028
+name: adult epistomal suture
+def: "The suture marking the anteroventral limit of the frons and terminating laterally in the anterior tentorial pits." [ISBN:0-937548-00-6]
+comment: Fig 02,04,07,08 Abbr: EpS in ISBN:0-937548-00-6.
+is_a: TGMA:0001828 ! anatomical line
+relationship: part_of TGMA:0000003 ! adult cranium
+
+[Term]
+id: TGMA:0000029
+name: adult epistomal ridge
+def: "The cranial inflection marked externally by the epistomal suture." [ISBN:0-937548-00-6]
+comment: Fig 05,06 Abbr: ER in ISBN:0-937548-00-6.
+relationship: part_of TGMA:0000003 ! adult cranium
