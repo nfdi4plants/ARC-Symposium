@@ -1,0 +1,202 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.1/context",
+    {
+      "Sample": "https://bioschemas.org/Sample",
+      "additionalProperty": "http://schema.org/additionalProperty",
+      "intendedUse": "https://bioschemas.org/intendedUse",
+      "computationalTool": "https://bioschemas.org/computationalTool",
+      "labEquipment": "https://bioschemas.org/labEquipment",
+      "reagent": "https://bioschemas.org/reagent",
+      "LabProtocol": "https://bioschemas.org/LabProtocol",
+      "executesLabProtocol": "https://bioschemas.org/executesLabProtocol",
+      "parameterValue": "https://bioschemas.org/parameterValue",
+      "LabProcess": "https://bioschemas.org/LabProcess",
+      "measurementMethod": "http://schema.org/measurementMethod"
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "#Organization_CEPLAS_Cluster_of_Excellence,_University_of_Cologne",
+      "@type": "Organization",
+      "name": "CEPLAS Cluster of Excellence, University of Cologne"
+    },
+    {
+      "@id": "http://orcid.org/0000-0003-2359-7789",
+      "@type": "Person",
+      "givenName": "Parisa",
+      "affiliation": {
+        "@id": "#Organization_CEPLAS_Cluster_of_Excellence,_University_of_Cologne"
+      },
+      "email": "pkakanj@uni-koeln.de",
+      "familyName": "Kakanj",
+      "address": "Zülpicherstr. 47b, D-50674 Cologne, Germany",
+      "telephone": "0211-4703528",
+      "jobTitle": {
+        "@id": "https://bioregistry.io/EFO:0009736"
+      }
+    },
+    {
+      "@id": "10.15252/embj.2021109992",
+      "@type": "PropertyValue",
+      "name": "DOI",
+      "value": "10.15252/embj.2021109992",
+      "propertyID": "http://purl.obolibrary.org/obo/OBI_0002110"
+    },
+    {
+      "@id": "35262206",
+      "@type": "PropertyValue",
+      "name": "PubMedID",
+      "value": "35262206",
+      "propertyID": "http://purl.obolibrary.org/obo/OBI_0001617"
+    },
+    {
+      "@id": "#Person_Parisa_Kakanj",
+      "@type": "Person",
+      "givenName": "Parisa Kakanj"
+    },
+    {
+      "@id": "#Person__Sourabh_Bhide",
+      "@type": "Person",
+      "givenName": " Sourabh Bhide"
+    },
+    {
+      "@id": "#Person__Bernard_Moussian",
+      "@type": "Person",
+      "givenName": " Bernard Moussian"
+    },
+    {
+      "@id": "#Person__Maria_Leptin",
+      "@type": "Person",
+      "givenName": " Maria Leptin"
+    },
+    {
+      "@id": "https://bioregistry.io/EFO:0001796",
+      "@type": "DefinedTerm",
+      "name": "published",
+      "termCode": "https://bioregistry.io/EFO:0001796"
+    },
+    {
+      "@id": "#Autophagy–mediated_plasma_membrane_removal_promotes_the_formation_of_epithelial_syncytia",
+      "@type": "ScholarlyArticle",
+      "headline": "Autophagy–mediated plasma membrane removal promotes the formation of epithelial syncytia",
+      "identifier": [
+        {
+          "@id": "10.15252/embj.2021109992"
+        },
+        {
+          "@id": "35262206"
+        }
+      ],
+      "author": [
+        {
+          "@id": "#Person_Parisa_Kakanj"
+        },
+        {
+          "@id": "#Person__Sourabh_Bhide"
+        },
+        {
+          "@id": "#Person__Bernard_Moussian"
+        },
+        {
+          "@id": "#Person__Maria_Leptin"
+        }
+      ],
+      "creativeWorkStatus": {
+        "@id": "https://bioregistry.io/EFO:0001796"
+      }
+    },
+    {
+      "@id": "studies/AutophagyEffects/",
+      "@type": "Dataset",
+      "additionalType": "Study",
+      "identifier": "AutophagyEffects",
+      "creator": {
+        "@id": "http://orcid.org/0000-0003-2359-7789"
+      },
+      "dateModified": "2025-06-24T09:46:43.7931668",
+      "description": "Effect of Autophagy on plasma membrane integrity\n",
+      "name": "Autophagy and Epithelial Plasma Membrane Integrity in Drosophila Larvae",
+      "citation": {
+        "@id": "#Autophagy–mediated_plasma_membrane_removal_promotes_the_formation_of_epithelial_syncytia"
+      }
+    },
+    {
+      "@id": "studies/PLACEHOLDER_STUDY_SpinningDisk/",
+      "@type": "Dataset",
+      "additionalType": "Study",
+      "identifier": "PLACEHOLDER_STUDY_SpinningDisk",
+      "dateModified": "2025-06-24T09:46:43.7941384"
+    },
+    {
+      "@id": "https://bioregistry.io/EFO:0009736",
+      "@type": "DefinedTerm",
+      "name": "principal investigator",
+      "termCode": "https://bioregistry.io/EFO:0009736"
+    },
+    {
+      "@id": "https://bioregistry.io/OBI:0001055",
+      "@type": "DefinedTerm",
+      "name": "spinning-disk confocal microscope",
+      "termCode": "https://bioregistry.io/OBI:0001055"
+    },
+    {
+      "@id": "#PV_Light_Microscopy",
+      "@type": "PropertyValue",
+      "name": "Light Microscopy",
+      "propertyID": "https://bioregistry.io/NCIT:C17995"
+    },
+    {
+      "@id": "assays/SpinningDisk/",
+      "@type": "Dataset",
+      "additionalType": "Assay",
+      "identifier": "SpinningDisk",
+      "creator": {
+        "@id": "http://orcid.org/0000-0003-2359-7789"
+      },
+      "measurementMethod": {
+        "@id": "https://bioregistry.io/OBI:0001055"
+      },
+      "variableMeasured": {
+        "@id": "#PV_Light_Microscopy"
+      }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "additionalType": "Investigation",
+      "identifier": "LarvaeDrosophila",
+      "creator": {
+        "@id": "http://orcid.org/0000-0003-2359-7789"
+      },
+      "datePublished": "2025-06-24T09:46:43.7950132",
+      "description": "Effect of Autophagy on plasma membrane integrity\n",
+      "hasPart": [
+        {
+          "@id": "studies/AutophagyEffects/"
+        },
+        {
+          "@id": "studies/PLACEHOLDER_STUDY_SpinningDisk/"
+        },
+        {
+          "@id": "assays/SpinningDisk/"
+        }
+      ],
+      "name": "Autophagy and Epithelial Plasma Membrane Integrity in Drosophila Larvae",
+      "citation": {
+        "@id": "#Autophagy–mediated_plasma_membrane_removal_promotes_the_formation_of_epithelial_syncytia"
+      },
+      "license": "ALL RIGHTS RESERVED BY THE AUTHORS"
+    },
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "conformsTo": {
+        "@id": "https://w3id.org/ro/crate/1.1"
+      },
+      "about": {
+        "@id": "./"
+      }
+    }
+  ]
+}

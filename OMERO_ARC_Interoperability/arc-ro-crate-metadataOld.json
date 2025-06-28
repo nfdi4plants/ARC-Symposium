@@ -1,0 +1,410 @@
+{
+  "@type": "CreativeWork",
+  "@id": "ro-crate-metadata.json",
+  "about": {
+    "@id": "./",
+    "@type": "Investigation",
+    "additionalType": "Investigation",
+    "identifier": "LarvaeDrosophila",
+    "filename": "isa.investigation.xlsx",
+    "title": "Autophagy and Epithelial Plasma Membrane Integrity in Drosophila Larvae",
+    "description": "Effect of Autophagy on plasma membrane integrity\n",
+    "submissionDate": "2023-03-09T17:20",
+    "ontologySourceReferences": [
+      {
+        "@id": "http://svn.code.sf.net/p/sempublishing/code/SCoRO/2017-09-04-SCoRO-1_9_1.owl",
+        "@type": "OntologySourceReference",
+        "description": "SCoRO, the Scholarly Contributions and Roles Ontology\n",
+        "file": "http://svn.code.sf.net/p/sempublishing/code/SCoRO/2017-09-04-SCoRO-1_9_1.owl",
+        "name": "SCoRO",
+        "version": "http://purl.org/spar/scoro/2017-09-04",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      },
+      {
+        "@id": "http://www.ebi.ac.uk/efo/releases/v3.14.0/efo.owl",
+        "@type": "OntologySourceReference",
+        "description": "Experimental Factor Ontology\n",
+        "file": "http://www.ebi.ac.uk/efo/releases/v3.14.0/efo.owl",
+        "name": "EFO",
+        "version": "v3.49.0",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      },
+      {
+        "@id": "http://purl.obolibrary.org/obo/obi.owl",
+        "@type": "OntologySourceReference",
+        "description": "Ontology for Biomedical Investigations\n",
+        "file": "http://purl.obolibrary.org/obo/obi.owl",
+        "name": "OBI",
+        "version": "http://purl.obolibrary.org/obo/obi/2023-09-20/obi.owl",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      },
+      {
+        "@id": "http://purl.obolibrary.org/obo/chmo.owl",
+        "@type": "OntologySourceReference",
+        "description": "Chemical Methods Ontology\n",
+        "file": "http://purl.obolibrary.org/obo/chmo.owl",
+        "name": "CHMO",
+        "version": "http://purl.obolibrary.org/obo/chmo/releases/2022-04-19/chmo.owl",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      },
+      {
+        "@id": "http://purl.obolibrary.org/obo/uo.owl",
+        "@type": "OntologySourceReference",
+        "description": "Units of measurement ontology\n",
+        "file": "http://purl.obolibrary.org/obo/uo.owl",
+        "name": "UO",
+        "version": "http://purl.obolibrary.org/obo/uo/releases/2023-05-25/uo.owl",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      },
+      {
+        "@id": "https://gitlab.com/openmicroscopy/incubator/ome-owl/-/blob/bd02745587446276cbce5e3f6d2e8fef76530f57/ontology/owl/ome_core/ome_core.owl.ttl",
+        "@type": "OntologySourceReference",
+        "description": "OME data model core ontology\n",
+        "file": "https://gitlab.com/openmicroscopy/incubator/ome-owl/-/blob/bd02745587446276cbce5e3f6d2e8fef76530f57/ontology/owl/ome_core/ome_core.owl.ttl",
+        "name": "OME-core",
+        "version": "2016-06",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      },
+      {
+        "@id": "https://raw.githubusercontent.com/nfdi4plants/nfdi4plants_ontology/main/dpbo.obo",
+        "@type": "OntologySourceReference",
+        "description": "DataPLANT biology ontology\n",
+        "file": "https://raw.githubusercontent.com/nfdi4plants/nfdi4plants_ontology/main/dpbo.obo",
+        "name": "DPBO",
+        "version": "init/2020-12-01",
+        "@context": {
+          "sdo": "http://schema.org/",
+          "OntologySourceReference": "sdo:DefinedTermSet",
+          "description": "sdo:description",
+          "name": "sdo:name",
+          "file": "sdo:url",
+          "version": "sdo:version",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      }
+    ],
+    "publications": [
+      {
+        "@id": "10.15252/embj.2021109992",
+        "@type": "Publication",
+        "pubMedID": "35262206",
+        "doi": "10.15252/embj.2021109992",
+        "authorList": [
+          {
+            "@type": "Person",
+            "name": "Parisa Kakanj",
+            "@context": {
+              "sdo": "http://schema.org/",
+              "Person": "sdo:Person",
+              "name": "sdo:name"
+            }
+          },
+          {
+            "@type": "Person",
+            "name": "Sourabh Bhide",
+            "@context": {
+              "sdo": "http://schema.org/",
+              "Person": "sdo:Person",
+              "name": "sdo:name"
+            }
+          },
+          {
+            "@type": "Person",
+            "name": "Bernard Moussian",
+            "@context": {
+              "sdo": "http://schema.org/",
+              "Person": "sdo:Person",
+              "name": "sdo:name"
+            }
+          },
+          {
+            "@type": "Person",
+            "name": "Maria Leptin",
+            "@context": {
+              "sdo": "http://schema.org/",
+              "Person": "sdo:Person",
+              "name": "sdo:name"
+            }
+          }
+        ],
+        "title": "Autophagy–mediated plasma membrane removal promotes the formation of epithelial syncytia",
+        "status": {
+          "@id": "https://bioregistry.io/EFO:0001796",
+          "@type": "OntologyAnnotation",
+          "annotationValue": "published",
+          "termSource": "EFO",
+          "termAccession": "https://bioregistry.io/EFO:0001796",
+          "@context": {
+            "sdo": "http://schema.org/",
+            "OntologyAnnotation": "sdo:DefinedTerm",
+            "annotationValue": "sdo:name",
+            "termSource": "sdo:inDefinedTermSet",
+            "termAccession": "sdo:termCode",
+            "comments": "sdo:disambiguatingDescription"
+          }
+        },
+        "@context": {
+          "sdo": "http://schema.org/",
+          "Publication": "sdo:ScholarlyArticle",
+          "pubMedID": "sdo:url",
+          "doi": "sdo:sameAs",
+          "title": "sdo:headline",
+          "status": "sdo:creativeWorkStatus",
+          "authorList": "sdo:author",
+          "comments": "sdo:disambiguatingDescription"
+        }
+      }
+    ],
+    "people": [
+      {
+        "@id": "pkakanj@uni-koeln.de",
+        "@type": "Person",
+        "orcid": "https://orcid.org/0000-0003-2359-7789",
+        "firstName": "Parisa",
+        "lastName": "Kakanj",
+        "email": "pkakanj@uni-koeln.de",
+        "phone": "0211-4703528",
+        "address": "Zülpicherstr. 47b, D-50674 Cologne, Germany",
+        "affiliation": {
+          "@type": "Organization",
+          "@id": "#Organization_CEPLAS_Cluster_of_Excellence,_University_of_Cologne",
+          "name": "CEPLAS Cluster of Excellence, University of Cologne",
+          "@context": {
+            "sdo": "http://schema.org/",
+            "Organization": "sdo:Organization",
+            "name": "sdo:name"
+          }
+        },
+        "@context": {
+          "sdo": "http://schema.org/",
+          "Person": "sdo:Person",
+          "orcid": "sdo:identifier",
+          "firstName": "sdo:givenName",
+          "lastName": "sdo:familyName",
+          "midInitials": "sdo:additionalName",
+          "email": "sdo:email",
+          "address": "sdo:address",
+          "phone": "sdo:telephone",
+          "fax": "sdo:faxNumber",
+          "comments": "sdo:disambiguatingDescription",
+          "roles": "sdo:jobTitle",
+          "affiliation": "sdo:affiliation"
+        }
+      }
+    ],
+    "studies": [
+      {
+        "@id": "#study/AutophagyEffects",
+        "@type": [
+          "Study"
+        ],
+        "additionalType": "Study",
+        "identifier": "AutophagyEffects",
+        "filename": "studies/AutophagyEffects/isa.study.xlsx",
+        "title": "Autophagy and Epithelial Plasma Membrane Integrity in Drosophila Larvae",
+        "description": "Effect of Autophagy on plasma membrane integrity\n",
+        "submissionDate": "2022-03-09T19:06",
+        "publications": [
+          {
+            "@id": "10.15252/embj.2021109992",
+            "@type": "Publication",
+            "pubMedID": "35262206",
+            "doi": "10.15252/embj.2021109992",
+            "authorList": [
+              {
+                "@type": "Person",
+                "name": "Parisa Kakanj",
+                "@context": {
+                  "sdo": "http://schema.org/",
+                  "Person": "sdo:Person",
+                  "name": "sdo:name"
+                }
+              },
+              {
+                "@type": "Person",
+                "name": "Sourabh Bhide",
+                "@context": {
+                  "sdo": "http://schema.org/",
+                  "Person": "sdo:Person",
+                  "name": "sdo:name"
+                }
+              },
+              {
+                "@type": "Person",
+                "name": "Bernard Moussian",
+                "@context": {
+                  "sdo": "http://schema.org/",
+                  "Person": "sdo:Person",
+                  "name": "sdo:name"
+                }
+              },
+              {
+                "@type": "Person",
+                "name": "Maria Leptin",
+                "@context": {
+                  "sdo": "http://schema.org/",
+                  "Person": "sdo:Person",
+                  "name": "sdo:name"
+                }
+              }
+            ],
+            "title": "Autophagy–mediated plasma membrane removal promotes the formation of epithelial syncytia",
+            "status": {
+              "@id": "https://bioregistry.io/EFO:0001796",
+              "@type": "OntologyAnnotation",
+              "annotationValue": "published",
+              "termSource": "EFO",
+              "termAccession": "https://bioregistry.io/EFO:0001796",
+              "@context": {
+                "sdo": "http://schema.org/",
+                "OntologyAnnotation": "sdo:DefinedTerm",
+                "annotationValue": "sdo:name",
+                "termSource": "sdo:inDefinedTermSet",
+                "termAccession": "sdo:termCode",
+                "comments": "sdo:disambiguatingDescription"
+              }
+            },
+            "@context": {
+              "sdo": "http://schema.org/",
+              "Publication": "sdo:ScholarlyArticle",
+              "pubMedID": "sdo:url",
+              "doi": "sdo:sameAs",
+              "title": "sdo:headline",
+              "status": "sdo:creativeWorkStatus",
+              "authorList": "sdo:author",
+              "comments": "sdo:disambiguatingDescription"
+            }
+          }
+        ],
+        "people": [
+          {
+            "@id": "pkakanj@uni-koeln.de",
+            "@type": "Person",
+            "orcid": "https://orcid.org/0000-0003-2359-7789",
+            "firstName": "Parisa",
+            "lastName": "Kakanj",
+            "email": "pkakanj@uni-koeln.de",
+            "phone": "0211-4703528",
+            "address": "Zülpicherstr. 47b, D-50674 Cologne, Germany",
+            "affiliation": {
+              "@type": "Organization",
+              "@id": "#Organization_CEPLAS_Cluster_of_Excellence,_University_of_Cologne",
+              "name": "CEPLAS Cluster of Excellence, University of Cologne",
+              "@context": {
+                "sdo": "http://schema.org/",
+                "Organization": "sdo:Organization",
+                "name": "sdo:name"
+              }
+            },
+            "@context": {
+              "sdo": "http://schema.org/",
+              "Person": "sdo:Person",
+              "orcid": "sdo:identifier",
+              "firstName": "sdo:givenName",
+              "lastName": "sdo:familyName",
+              "midInitials": "sdo:additionalName",
+              "email": "sdo:email",
+              "address": "sdo:address",
+              "phone": "sdo:telephone",
+              "fax": "sdo:faxNumber",
+              "comments": "sdo:disambiguatingDescription",
+              "roles": "sdo:jobTitle",
+              "affiliation": "sdo:affiliation"
+            }
+          }
+        ],
+        "@context": {
+          "sdo": "http://schema.org/",
+          "Study": "sdo:Dataset",
+          "identifier": "sdo:identifier",
+          "title": "sdo:headline",
+          "additionalType": "sdo:additionalType",
+          "description": "sdo:description",
+          "submissionDate": "sdo:dateCreated",
+          "publicReleaseDate": "sdo:datePublished",
+          "publications": "sdo:citation",
+          "people": "sdo:creator",
+          "assays": "sdo:hasPart",
+          "filename": "sdo:alternateName",
+          "comments": "sdo:comment",
+          "processSequence": "sdo:about",
+          "studyDesignDescriptors": "arc:ARC#ARC_00000037"
+        }
+      }
+    ],
+    "@context": {
+      "sdo": "http://schema.org/",
+      "Investigation": "sdo:Dataset",
+      "identifier": "sdo:identifier",
+      "title": "sdo:headline",
+      "additionalType": "sdo:additionalType",
+      "description": "sdo:description",
+      "submissionDate": "sdo:dateCreated",
+      "publicReleaseDate": "sdo:datePublished",
+      "publications": "sdo:citation",
+      "people": "sdo:creator",
+      "studies": "sdo:hasPart",
+      "ontologySourceReferences": "sdo:mentions",
+      "comments": "sdo:comment",
+      "filename": "sdo:alternateName"
+    }
+  },
+  "conformsTo": {
+    "@id": "https://w3id.org/ro/crate/1.1"
+  },
+  "@context": {
+    "sdo": "http://schema.org/",
+    "arc": "http://purl.org/nfdi4plants/ontology/",
+    "CreativeWork": "sdo:CreativeWork",
+    "about": "sdo:about",
+    "conformsTo": "sdo:conformsTo"
+  }
+}
