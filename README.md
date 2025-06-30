@@ -9,9 +9,10 @@ The main goal is to integrate ARC-related work of different groups across consor
 
 ## Contribution Guide
 
-The main contribution content in this repository is the documentation of the discussion results. 
+The main contribution content in this repository is the documentation of the discussion results. Contributions in this repository are done by opening a PR to the `main` branch.
 
 For this, create a folder with a succinct name for your project. In this folder, there MUST be a `README.md`. This README SHOULD contain:
+- List of contributors (see [BioHackrXiv example](https://raw.githubusercontent.com/biohackrxiv/bhxiv-gen-pdf/master/example/logic/paper.md) as style reference)
 - Motivation or Explanation of the Problem
 - Proposed Solution with Discussion of constraints
 - Technical Details on Implementation
