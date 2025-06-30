@@ -35,7 +35,7 @@ Additional technical challenges include:
 
     * `name`: either `Prefix` or `Position`
     * `value`: a string (for prefix, e.g. `-i`) or integer (for position, e.g. `1`)
-  * The propertyID can potentially be used to describe the `PropertyValue` further with an ontology term
+  * The `propertyID` property can potentially be used to describe the `PropertyValue` further with an ontology term
 * The `.cwl` wrappers used by ARCs are **omitted** from the RO-Crate, so that only the underlying Galaxy workflow is described and imported. This omission should be detected automatically (though currently requires manual handling).
 * For workflow runs with `ProcessSequences`, it is necessary to determine which process sequence inputs are potentially also used as actual workflow inputs. To enable this, workflow inputs use the `exampleOfWork` property, referencing the ID of the corresponding `FormalParameter` describing the workflow input.
 * The `programmingLanguage` property is used to indicate the workflow language and serves as a marker within the RO-Crate for conversion back to the scaffold representation.
