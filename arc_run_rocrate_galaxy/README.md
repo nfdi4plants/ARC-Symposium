@@ -3,6 +3,9 @@ authors:
   - name: Caroline Ott
     orcid: 0000-0002-6601-2165
     affiliation: 1
+  - name: Heinrich Lukas Weil
+    orcid: 0000-0003-1945-6342
+    affiliation: 1
 affiliations:
   - name: Computational Systems Biology, Rheinland-Pfälzische Technische Universität Kaiserslautern-Landau, Kaiserslautern, Germany
     index: 1
