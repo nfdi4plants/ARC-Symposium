@@ -79,6 +79,7 @@
     {
       "@id": "#FormalParameter_W_Shuffle_parameter1",
       "@type": "FormalParameter",
+      "additionalType": "File",
       "name": "parameter1",
       "valueRequired": true,
       "identifier": [
@@ -92,6 +93,7 @@
     },
     {
       "@id": "#FormalParameter_W_Shuffle_outputFile1",
+      "additionalType": "DataType",
       "@type": "FormalParameter",
       "name": "outputFile1"
     },
