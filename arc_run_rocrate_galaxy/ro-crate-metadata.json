@@ -68,7 +68,7 @@
       "@id": "#FormalParameter_W_Shuffle_parameter1_position",
       "@type": "PropertyValue",
       "name": "Position",
-      "value": "1"
+      "value": "0"
     },
     {
       "@id": "#FormalParameter_W_Shuffle_parameter1_prefix",
