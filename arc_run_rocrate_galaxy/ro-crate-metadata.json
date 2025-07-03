@@ -248,6 +248,9 @@
       "description": "This run shuffles a fasta",
       "hasPart": [
         {
+          "@id": "workflows/Shuffle/ShuffleSequences.ga"
+        },
+        {
           "@id": "studies/Yeast/resources/Yeast.fasta"
         },
         {
@@ -288,13 +291,13 @@
       "datePublished": "2025-06-24T11:48:36.3939304",
       "hasPart": [
         {
-          "@id": "studies/Yeast/resources/Yeast.fasta"
+          "@id": "studies/Yeast/"
         },
         {
-          "@id": "workflows/Shuffle/ShuffleSequences.ga"
+          "@id": "workflows/Shuffle/"
         },
         {
-          "@id": "runs/Out/Galaxy6-[Tabular-to-FASTA on data 5].fasta"
+          "@id": "runs/Out/"
         }
       ],
       "name": "Shuffle",
