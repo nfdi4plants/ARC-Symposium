@@ -17,7 +17,7 @@ affiliations:
 
 Research Object Crates (RO-Crates), specifically **Workflow RO-Crates** and **Workflow Run RO-Crates**, are essential standards for capturing and exchanging metadata about workflows and their executions. Similarly, [ARCs](https://arc-rdm.org/) use RO-Crate profiles designed to be compatible with the existing [Workflow Run RO-Crate](https://www.researchobject.org/workflow-run-crate/) and [Workflow RO-Crate](https://about.workflowhub.eu/Workflow-RO-Crate/) specifications. This compatibility is ensured when profile recommendations are followed.
 
-One goal is, that ARCs which include [Galaxy](https://galaxyproject.org/) workflows, should be convertable to **Workflow and Workflow Run RO-Crates** that they can be imported and executed by Galaxy. While profile descriptions exist ([see example profile](https://github.com/nfdi4plants/arc-wr-ro-crate-profile/blob/harmonize/profile/arc_wr_ro_crate.md)), practical examples are lacking.
+One goal is, that ARCs which include [Galaxy](https://galaxyproject.org/) workflows, should be convertable to **Workflow and Workflow Run RO-Crates** that they can be imported and executed by Galaxy. [The proposed ARC WR RO-Crate profile](https://github.com/nfdi4plants/arc-wr-ro-crate-profile/blob/harmonize/profile/arc_wr_ro_crate.md) already meets most of the requirements outlined so far and can be adapted for further requirements that may arise during the actual implementation process. Already known additional requirements with proposed solutions are decribed below. An example [ro-crate-metadata.json](https://github.com/nfdi4plants/ARC-Symposium/blob/main/arc_run_rocrate_galaxy/ro-crate-metadata.json) for visualization and testing purposes is included as well.
 
 Additional technical challenges include:
 
@@ -35,6 +35,7 @@ Additional technical challenges include:
 
     * `name`: either `Prefix` or `Position`
     * `value`: a string (for prefix, e.g. `-i`) or integer (for position, e.g. `1`)
+      * The `value` chosen in this example for the prefix is for visualization purposes and doesn't correspond to the actual workflow 
   * The `propertyID` property can potentially be used to describe the `PropertyValue` further with an ontology term
     * Currently, we have no fitting ontology term. We will propose to add the terms to the [DPBO](https://terminology.tib.eu/ts/ontologies/dpbo/terms?lang=en) if this solution is accepted
 * The `.cwl` wrappers used by ARCs are **omitted** from the RO-Crate, so that only the underlying Galaxy workflow is described and imported. This omission should be detected automatically (though currently requires manual handling).
