@@ -19,11 +19,12 @@ Research Object Crates (RO-Crates), specifically **Workflow RO-Crates** and **Wo
 
 One goal is, that ARCs which include [Galaxy](https://galaxyproject.org/) workflows, should be convertable to **Workflow and Workflow Run RO-Crates** that they can be imported and executed by Galaxy. [The proposed ARC WR RO-Crate profile](https://github.com/nfdi4plants/arc-wr-ro-crate-profile/blob/harmonize/profile/arc_wr_ro_crate.md) already meets most of the requirements outlined so far and can be adapted for further requirements that may arise during the actual implementation process. Already known additional requirements with proposed solutions are decribed below. An example [ro-crate-metadata.json](https://github.com/nfdi4plants/ARC-Symposium/blob/main/arc_run_rocrate_galaxy/ro-crate-metadata.json) for visualization and testing purposes is included as well.
 
-Additional technical challenges include:
+Additional technical challenges and possibilites include:
 
 * ARC workflow descriptions in the scaffold representation use `.cwl` wrappers for Galaxy workflows. These wrappers are not intended to appear in the resulting RO-Crate, since Galaxy is the relevant workflow engine.
 * The current profiles lack position and prefix information for workflow inputs in their JSON-LD representations.
 * Process sequences in ARCs may reuse inputs also specified as workflow run invocations, so it must be clear which elements in the process sequence also map to workflow inputs.
+* Once fully implemented, the [ARC WR RO-Crate profile](https://github.com/nfdi4plants/arc-wr-ro-crate-profile/blob/harmonize/profile/arc_wr_ro_crate.md) can be validated against the requirements necessary for compatibility with Galaxy
 
 ---
 
