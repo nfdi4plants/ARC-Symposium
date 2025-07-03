@@ -268,13 +268,13 @@
       "datePublished": "2025-06-24T11:48:36.3939304",
       "hasPart": [
         {
-          "@id": "studies/Yeast/"
+          "@id": "studies/Yeast/resources/Yeast.fasta"
         },
         {
-          "@id": "workflows/Shuffle/"
+          "@id": "workflows/Shuffle/ShuffleSequences.ga"
         },
         {
-          "@id": "runs/Out/"
+          "@id": "runs/Out/Galaxy6-[Tabular-to-FASTA on data 5].fasta"
         }
       ],
       "name": "Shuffle",
