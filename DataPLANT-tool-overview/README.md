@@ -8,7 +8,7 @@ Interactive HTML reference pages for the [DataPLANT](https://www.nfdi4plants.org
 
 ## Motivation / Problem
 
-DataPLANT provides a growing number of tools around the **ARC**.  For newcomers — especially new data stewards — it is hard to get an overview of:
+DataPLANT provides a growing number of tools around the **ARC** — a FAIR-compliant research data container. For newcomers — especially new data stewards — it is hard to get an overview of:
 
 - which tools exist and what each one does
 - which tool to use at which point in the research workflow
@@ -20,10 +20,13 @@ No single, up-to-date, visual reference existed that answers all three questions
 
 Two standalone HTML pages that can be opened in any browser without installation, shared via link, and updated semi-automatically via a Python script:
 
-| File | Description |
-|---|---|
-| `DataPLANT_Tool_Overview.html` | Workflow-based onboarding overview organised into 5 steps (Create ARCs → Annotate → Collaborate → Publish → Learn). Filterable by category, searchable, with "When do I use this?" guidance per tool. |
-| `DataPLANT_Interactive_Map.html` | Draggable node map showing all tools and their dependencies. Nodes can be rearranged freely; arrows update live. Click any node for details and contact persons. |
+| File | Description | Preview |
+|---|---|---|
+| `DataPLANT_Tool_Overview.html` | Workflow-based onboarding overview organised into 5 steps (Create ARCs → Annotate → Collaborate → Publish → Learn). Filterable by category, searchable, with "When do I use this?" guidance per tool. | [▶ Open preview](https://htmlpreview.github.io/?https://github.com/SabrinaZander/ARC-Symposium/blob/DataPLANT-tool-overview/DataPLANT-tool-overview/DataPLANT_Tool_Overview.html) |
+| `DataPLANT_Interactive_Map.html` | Draggable node map showing all tools and their dependencies. Nodes can be rearranged freely; arrows update live. Click any node for details and contact persons. | [▶ Open preview](https://htmlpreview.github.io/?https://github.com/SabrinaZander/ARC-Symposium/blob/DataPLANT-tool-overview/DataPLANT-tool-overview/DataPLANT_Interactive_Map.html) |
+
+> **Note:** Preview links point to the current branch. Once this PR is merged into the main DataPLANT repository, update the links above to reflect the new path, e.g.:
+> `https://htmlpreview.github.io/?https://github.com/nfdi4plants/ARC-Symposium/blob/main/DataPLANT-tool-overview/DataPLANT_Tool_Overview.html`
 
 Both files are **fully self-contained** — they work offline and require no server or framework.
 
