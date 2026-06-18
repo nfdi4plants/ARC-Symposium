@@ -2,7 +2,7 @@
 authors:
   - name: Mohamed Abouzid
     orcid: https://orcid.org/0009-0007-7035-4399
-    affiliation: Forschungszentrum Jülich (IBG-4: Bioinformatics)
+    affiliation: Forschungszentrum Juelich
 ---
 
 # Ontology Term Validation for ARCs (`ontology-terms`)
