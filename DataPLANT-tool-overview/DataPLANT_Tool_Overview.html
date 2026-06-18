@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataPLANT Tool Overview for Data Stewards</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#f0f4f8; color:#1a1a2e; }
+.page { padding:24px; max-width:980px; margin:0 auto; }
+.header { margin-bottom:20px; }
+.header h1 { font-size:22px; font-weight:800; color:#1a1a2e; }
+.header p { font-size:13px; color:#666; margin-top:4px; }
+.header .meta { font-size:11px; color:#aaa; margin-top:6px; }
+.filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; align-items:center; }
+.filter-btn { border:1.5px solid #dde1e7; background:#fff; border-radius:20px; padding:5px 14px; font-size:11px; font-weight:600; cursor:pointer; color:#555; transition:all .15s; }
+.filter-btn:hover { border-color:#888; color:#222; }
+.filter-btn.active { color:#fff; background:#1a1a2e; border-color:#1a1a2e; }
+.search { border:1.5px solid #dde1e7; border-radius:20px; padding:5px 14px; font-size:11px; width:180px; outline:none; background:#fff; }
+.search:focus { border-color:#5b8dd9; }
+.step { margin-bottom:22px; }
+.step-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.step-num { width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#fff; flex-shrink:0; }
+.step-title { font-size:13px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; }
+.step-desc { font-size:11px; color:#888; margin-left:34px; margin-top:-5px; margin-bottom:8px; }
+.cards { display:flex; flex-wrap:wrap; gap:10px; padding-left:34px; }
+.card { background:#fff; border:1.5px solid #e2e8f0; border-radius:10px; padding:12px 14px; width:210px; cursor:pointer; transition:all .18s; }
+.card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,.1); border-color:#aaa; }
+.card.selected { box-shadow:0 0 0 2.5px #5b8dd9, 0 4px 16px rgba(0,0,0,.12); border-color:transparent; }
+.card-accent { width:100%; height:4px; border-radius:4px; margin-bottom:9px; }
+.card-name { font-size:12px; font-weight:700; color:#1a1a2e; margin-bottom:2px; }
+.card-type { font-size:9px; font-weight:600; text-transform:uppercase; letter-spacing:.6px; margin-bottom:6px; }
+.card-desc { font-size:10.5px; color:#555; line-height:1.45; margin-bottom:8px; }
+.card-people { display:flex; flex-wrap:wrap; gap:3px; }
+.avatar { font-size:9px; background:#f1f5f9; color:#475569; border-radius:12px; padding:2px 7px; }
+.card-link { font-size:9px; color:#5b8dd9; margin-top:6px; display:block; text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.foundation { background:linear-gradient(135deg,#fdecea,#fff5f5); border:1.5px solid #f5c6c6; border-radius:10px; padding:13px 16px; margin-bottom:20px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.foundation-label { font-size:10px; font-weight:700; color:#c0392b; text-transform:uppercase; letter-spacing:.5px; flex-shrink:0; }
+.foundation-item { display:flex; flex-direction:column; cursor:pointer; }
+.foundation-name { font-size:12px; font-weight:700; color:#c0392b; }
+.foundation-sub { font-size:9.5px; color:#888; }
+.divider { width:1px; background:#f5c6c6; align-self:stretch; }
+.detail { background:#fff; border:1.5px solid #dde1e7; border-radius:10px; padding:16px 18px; margin-top:14px; }
+.detail h2 { font-size:15px; font-weight:700; }
+.detail-tag { display:inline-block; font-size:9.5px; font-weight:600; padding:2px 10px; border-radius:20px; color:#fff; margin:5px 0 10px; }
+.detail p { font-size:12px; line-height:1.6; color:#444; margin-bottom:10px; }
+.detail-section { font-size:10px; font-weight:700; color:#888; text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }
+.when-list { list-style:none; margin-bottom:12px; }
+.when-list li { font-size:11.5px; color:#444; padding:2px 0; }
+.when-list li::before { content:"→ "; color:#5b8dd9; font-weight:700; }
+.contact-chips { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+.contact-chip { background:#f8faff; border:1.5px solid #e2e8f0; border-radius:20px; padding:4px 12px; font-size:11px; }
+.contact-chip strong { font-weight:700; }
+.contact-chip span { color:#888; font-size:10px; }
+.ph { color:#aaa; font-size:12px; text-align:center; padding:14px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <h1>&#127807; DataPLANT Tool Overview</h1>
+    <p>For new data stewards — which tools exist, what do they do, and who do I contact?</p>
+    <div class="meta">As of June 2025 &middot; Sources: GitHub nfdi4plants &middot; nfdi4plants.org</div>
+  </div>
+
+  <div class="filters">
+    <span style="font-size:11px;font-weight:600;color:#888;">Filter:</span>
+    <button class="filter-btn active" onclick="filterBy('all',this)">All</button>
+    <button class="filter-btn" onclick="filterBy('arc',this)">&#128193; Create ARCs</button>
+    <button class="filter-btn" onclick="filterBy('annotate',this)">&#127991; Annotate</button>
+    <button class="filter-btn" onclick="filterBy('platform',this)">&#9729; Platform</button>
+    <button class="filter-btn" onclick="filterBy('publish',this)">&#128228; Publish</button>
+    <button class="filter-btn" onclick="filterBy('learn',this)">&#128218; Learn</button>
+    <input class="search" type="text" placeholder="Search…" oninput="doSearch(this.value)">
+  </div>
+
+  <div class="foundation">
+    <div class="foundation-label">&#128295; Foundation</div>
+    <div class="divider"></div>
+    <div class="foundation-item" onclick="showDetail('arctrl')">
+      <div class="foundation-name">ARCtrl</div>
+      <div class="foundation-sub">.NET / JS / Python library &middot; used internally by most tools</div>
+    </div>
+    <div class="divider"></div>
+    <div class="foundation-item" onclick="showDetail('arc-spec')">
+      <div class="foundation-name">ARC Specification</div>
+      <div class="foundation-sub">Defines the ARC standard — the basis for all tools</div>
+    </div>
+  </div>
+
+  <div id="steps-container"></div>
+  <div class="detail" id="detail"><p class="ph">Click on a tool card to see details.</p></div>
+</div>
+
+<script>
+var STEPS = [
+  { num:1, color:"#3a7d44", title:"Create & manage ARCs", tag:"arc", desc:"Start here — an ARC is your digital research container.", tools:[
+    { id:"arcitect", name:"ARCitect", type:"Desktop App", color:"#3a7d44", desc:"The main app for data stewards. Create, edit and sync ARCs with the DataHUB.", when:["Create a new ARC","Edit metadata","Upload / download an ARC"], contacts:[["Jonas Lukasczyk","JonasLukasczyk","182 Commits"],["Kevin Frey","Freymaurer","157 Commits"],["Dominik Brilhaus","Brilator","117 Commits"]], url:"https://github.com/nfdi4plants/ARCitect" },
+    { id:"arcmanager", name:"ARCManager", type:"Web App", color:"#3a7d44", desc:"Manage ARCs in the browser — no installation needed, for quick access.", when:["No desktop available → browser alternative to ARCitect","Quickly inspect an ARC"], contacts:[["j-bauer","j-bauer","86 Commits"],["TetraW","TetraW","24 Commits"]], url:"https://github.com/nfdi4plants/ARCmanager" },
+    { id:"arccommander", name:"ARCCommander", type:"CLI Tool", color:"#3a7d44", desc:"Command-line tool for power users, scripting and server automation.", when:["Automate ARC workflows","Work in server environments without a GUI"], contacts:[["Lukas Weil","HLWeil","310 Commits"],["Oliver Maus","omaus","189 Commits"]], url:"https://github.com/nfdi4plants/ARCCommander" },
+    { id:"arc-vscode", name:"arc-vs-code", type:"VS Code Extension", color:"#c46010", desc:"ARC management directly in VS Code — for developers and technical users.", when:["If you already work in VS Code","Manage code and ARC in one window"], contacts:[["Jonas Lukasczyk","JonasLukasczyk",""],["Kevin Frey","Freymaurer",""]], url:"https://github.com/nfdi4plants/arc-vs-code" }
+  ]},
+  { num:2, color:"#8b5cf6", title:"Annotate metadata", tag:"annotate", desc:"Metadata describes your experiments — ISA-compliant, using ontologies.", tools:[
+    { id:"swate", name:"Swate", type:"Annotation Tool", color:"#8b5cf6", desc:"The core tool for metadata annotation. Ontology-driven, ISA-compliant. Integrated in ARCitect and available as a web app.", when:["Capture experiment metadata","Fill in ISA tables","Search for ontology terms"], contacts:[["Kevin Frey","Freymaurer","1520 Commits"],["Patrick Blume","Etschbeijer","551 Commits"]], url:"https://swate-alpha.nfdi4plants.org" },
+    { id:"swate-tmpl", name:"Swate Templates", type:"Template Registry", color:"#7c4ddb", desc:"Pre-built metadata templates for common methods (e.g. RNA-Seq, Proteomics).", when:["Find a template for your method","Create or submit a new template"], contacts:[["StellaEggels","StellaEggels","199 Commits"],["Patrick Blume","Etschbeijer","175 Commits"],["Dominik Brilhaus","Brilator","167 Commits"]], url:"https://github.com/nfdi4plants/swate-template-registry" },
+    { id:"ontology", name:"nfdi4plants Ontology", type:"Ontology", color:"#6d3fc7", desc:"Controlled vocabulary for plant sciences. Used automatically by Swate.", when:["A term is missing from the ontology → report it here","Submit ontology contributions"], contacts:[["kdumschott","kdumschott","163 Commits"],["StellaEggels","StellaEggels","106 Commits"],["Hannah Doerpholz","Hannah-Doerpholz","86 Commits"]], url:"https://github.com/nfdi4plants/nfdi4plants_ontology" },
+    { id:"excel-addin", name:"Excel Add-In", type:"Excel Plugin", color:"#c46010", desc:"Swate directly in Microsoft Excel — for users who prefer spreadsheets.", when:["Capture metadata in Excel","Annotate existing Excel spreadsheets"], contacts:[["Kevin Frey","Freymaurer",""],["Patrick Blume","Etschbeijer",""]], url:"https://github.com/nfdi4plants/Swate" }
+  ]},
+  { num:3, color:"#1d6fa4", title:"Collaborate & share", tag:"platform", desc:"The PLANTdataHUB is the central platform — like GitHub for research data.", tools:[
+    { id:"datahub", name:"PLANTdataHUB", type:"GitLab Platform", color:"#1d6fa4", desc:"Central platform for ARC storage, versioning and collaboration. Federated instances at various institutes.", when:["Share an ARC with colleagues","View version history","Run quality checks (CI/CD)"], contacts:[["j-bauer","j-bauer","86 Commits"],["TetraW","TetraW","24 Commits"],["Zerskk","Zerskk","14 Commits"]], url:"https://git.nfdi4plants.org" },
+    { id:"arcsearch", name:"ARCSearch", type:"Search Service", color:"#2a6496", desc:"Search across all public ARCs on all PLANTdataHUB instances.", when:["Find similar datasets","Check if data already exists"], contacts:[["DataHUB Team","nfdi4plants",""]], url:"https://www.nfdi4plants.org/arc-data-hub/" },
+    { id:"elab2arc", name:"elab2ARC", type:"ELN Import", color:"#c46010", desc:"Imports experiments from eLabFTW directly as an ARC. For institutes using eLabFTW as their ELN.", when:["Convert eLabFTW experiments to ARC format"], contacts:[["Xiao-Ran Zhou","xiaoranzhou","215 Commits"],["Sabrina Zander","SabrinaZander","6 Commits"]], url:"https://github.com/nfdi4plants/elab2ARC" }
+  ]},
+  { num:4, color:"#555", title:"Validate & publish", tag:"publish", desc:"Check ARCs, export them and publish permanently.", tools:[
+    { id:"archigator", name:"archigator", type:"Validation Tool", color:"#777", desc:"Validates an ARC against the ARC Specification before publication.", when:["Validate an ARC before publishing","Find errors in the ARC format"], contacts:[["Zerskk","Zerskk","14 Commits"]], url:"https://github.com/nfdi4plants/archigator-frontend" },
+    { id:"arc-export", name:"arc-export", type:"Export Tool", color:"#555", desc:"Exports ARCs to ISA-JSON and RO-Crate formats — for other repositories and ELIXIR.", when:["Prepare an ARC for an external repository","Establish interoperability"], contacts:[["Lukas Weil","HLWeil","49 Commits"],["Kevin Schneider","kMutagene","45 Commits"]], url:"https://github.com/nfdi4plants/arc-export" },
+    { id:"archive", name:"ARChive", type:"Publication & DOI", color:"#1d6fa4", desc:"Publishes ARCs permanently with a DOI — citable and FAIR-archived.", when:["Paper is being published → publish the data","A DOI for the dataset is needed"], contacts:[["DataHUB Team","nfdi4plants",""]], url:"https://www.nfdi4plants.org/arc-data-hub/" },
+    { id:"dataplan", name:"DataPLAN", type:"DMP Generator", color:"#1d6fa4", desc:"Generates Data Management Plans (DMPs) according to DFG/BMBF requirements.", when:["Writing a grant proposal → DMP needed","Applying for DFG/BMBF funding"], contacts:[["Xiao-Ran Zhou","xiaoranzhou","482 Commits"]], url:"https://dmpg.nfdi4plants.org" }
+  ]},
+  { num:5, color:"#333", title:"Learn & onboard", tag:"learn", desc:"Documentation, training and interactive tools for getting started.", tools:[
+    { id:"knowledgebase", name:"Knowledgebase", type:"Documentation", color:"#333", desc:"First stop for questions — tutorials, how-tos and explanations for all DataPLANT tools.", when:["How does X work?","Look up tool documentation","Onboarding new team members"], contacts:[["Dominik Brilhaus","Brilator","1993 Commits"],["Kevin Frey","Freymaurer","147 Commits"],["lewir101","lewir101","105 Commits"]], url:"https://nfdi4plants.org/nfdi4plants.knowledgebase/" },
+    { id:"training", name:"training-material", type:"Workshop Material", color:"#444", desc:"Slides, exercises and course materials from DataPLANT workshops.", when:["Prepare a workshop","Find learning material for data stewards"], contacts:[["Dominik Brilhaus","Brilator","1507 Commits"],["toriapetrova","toriapetrova","111 Commits"]], url:"https://github.com/nfdi4plants/training-material" },
+    { id:"metadataquiz", name:"metadataquiz", type:"Learning Quiz", color:"#c46010", desc:"Interactive quiz on metadata concepts and ARC basics.", when:["Test your knowledge","Liven up a training session"], contacts:[["Xiao-Ran Zhou","xiaoranzhou","40 Commits"],["Sabrina Zander","SabrinaZander","1 Commit"]], url:"https://github.com/nfdi4plants/metadataquiz" }
+  ]}
+];
+
+var EXTRA = {
+  arctrl: { name:"ARCtrl", color:"#c0392b", type:"Core Library", desc:"The central .NET/JavaScript/Python library. Used internally by almost all DataPLANT tools. As a data steward you use ARCtrl indirectly — it ensures that all tools work consistently.", when:["You use ARCtrl indirectly through ARCitect, arc-export, ARCCommander, etc."], contacts:[["Lukas Weil","HLWeil","1138 Commits"],["Kevin Frey","Freymaurer","393 Commits"],["Caroline Ott","caroott","220 Commits"]], url:"https://github.com/nfdi4plants/ARCtrl" },
+  "arc-spec": { name:"ARC Specification", color:"#2d6a4f", type:"Standard", desc:"Defines the ARC as a FAIR Digital Object — directory structure, ISA metadata formats and conventions. All tools comply with this standard.", when:["If you want to understand why ARCs are structured the way they are","Contributing to the standard"], contacts:[["Lukas Weil","HLWeil","86 Commits"],["Kevin Schneider","kMutagene","33 Commits"]], url:"https://github.com/nfdi4plants/ARC-specification" }
+};
+
+var activeFilter = "all";
+var searchTerm = "";
+
+function render() {
+  var c = document.getElementById("steps-container");
+  c.innerHTML = "";
+  STEPS.forEach(function(step) {
+    var vis = step.tools.filter(function(t) {
+      var mf = activeFilter === "all" || step.tag === activeFilter;
+      var ms = !searchTerm || t.name.toLowerCase().indexOf(searchTerm) !== -1 || t.desc.toLowerCase().indexOf(searchTerm) !== -1;
+      return mf && ms;
+    });
+    if (!vis.length) return;
+    var el = document.createElement("div");
+    el.className = "step";
+    var cardsHtml = vis.map(function(t) {
+      return '<div class="card" id="card-' + t.id + '">' +
+        '<div class="card-accent" style="background:' + t.color + '"></div>' +
+        '<div class="card-name">' + t.name + '</div>' +
+        '<div class="card-type" style="color:' + t.color + '">' + t.type + '</div>' +
+        '<div class="card-desc">' + t.desc + '</div>' +
+        '<div class="card-people">' + t.contacts.slice(0,2).map(function(p){ return '<span class="avatar">' + p[0] + '</span>'; }).join("") + '</div>' +
+        '<a class="card-link" href="' + t.url + '" target="_blank" onclick="event.stopPropagation()">' + t.url.replace("https://","") + '</a>' +
+        '</div>';
+    }).join("");
+    el.innerHTML = '<div class="step-header"><div class="step-num" style="background:' + step.color + '">' + step.num + '</div><div class="step-title" style="color:' + step.color + '">' + step.title + '</div></div><div class="step-desc">' + step.desc + '</div><div class="cards">' + cardsHtml + '</div>';
+    c.appendChild(el);
+    vis.forEach(function(t) {
+      var card = document.getElementById("card-" + t.id);
+      if (card) card.addEventListener("click", function(){ showDetail(t.id); });
+    });
+  });
+}
+
+function showDetail(id) {
+  var tool = null;
+  for (var i=0; i<STEPS.length; i++) {
+    for (var j=0; j<STEPS[i].tools.length; j++) {
+      if (STEPS[i].tools[j].id === id) { tool = STEPS[i].tools[j]; break; }
+    }
+    if (tool) break;
+  }
+  var t = tool || EXTRA[id];
+  if (!t) return;
+  var whenHtml = (t.when && t.when.length) ? '<div class="detail-section">When do I use this?</div><ul class="when-list" style="margin-bottom:12px">' + t.when.map(function(w){ return '<li>' + w + '</li>'; }).join("") + '</ul>' : "";
+  var contactHtml = (t.contacts || []).map(function(c){ return '<div class="contact-chip"><strong>' + c[0] + '</strong> <span style="font-style:normal">@' + c[1] + (c[2] ? ' &middot; ' + c[2] : '') + '</span></div>'; }).join("");
+  document.getElementById("detail").innerHTML = '<h2>' + t.name + '</h2><span class="detail-tag" style="background:' + (t.color||"#555") + '">' + (t.type||"") + '</span><p>' + t.desc + '</p>' + whenHtml + '<div class="detail-section">Responsible / Contact persons</div><div class="contact-chips">' + contactHtml + '</div><a href="' + t.url + '" target="_blank" style="font-size:11px;color:#5b8dd9">' + t.url + '</a>';
+  document.querySelectorAll(".card").forEach(function(c){ c.classList.remove("selected"); });
+  var sel = document.getElementById("card-" + id);
+  if (sel) sel.classList.add("selected");
+}
+
+function filterBy(tag, btn) {
+  activeFilter = tag;
+  document.querySelectorAll(".filter-btn").forEach(function(b){ b.classList.remove("active"); b.style.background=""; b.style.color=""; });
+  btn.classList.add("active");
+  render();
+}
+
+function doSearch(v) { searchTerm = v.toLowerCase(); render(); }
+
+render();
+</script>
+</body>
+</html>
