@@ -1,7 +1,7 @@
 # General workload in the ARC Symposium 2026
 
--Helping out in the new Electron [Swate](https://github.com/nfdi4plants/Swate/tree/epic/SwateApp) App (ARCitect) by doing style adjustments and erasing small bugs.
--Improving the view and look-and-feel mechanic in the [Provenace Table Editor](https://github.com/nfdi4plants/Swate/tree/feature/TableEditor) in Swate, alongside with [Caroline Ott](https://github.com/caroott).
+- Helping out in the new Electron [Swate](https://github.com/nfdi4plants/Swate/tree/epic/SwateApp) App (ARCitect) by doing style adjustments and erasing small bugs.
+- Improving the view and look-and-feel mechanic in the [Provenace Table Editor](https://github.com/nfdi4plants/Swate/tree/feature/TableEditor) in Swate, alongside with [Caroline Ott](https://github.com/caroott).
 - Setting up the components of [BOAT](https://github.com/nfdi4plants/Swate/tree/feature/BOATAddon) in the Swate playground and adjusting the Swate styling to be integrated into the Electron Swate App.
 
 In more detail:
