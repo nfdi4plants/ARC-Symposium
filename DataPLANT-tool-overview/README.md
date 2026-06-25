@@ -66,7 +66,14 @@ export GITHUB_TOKEN=your_token_here # Mac/Linux
 python update_dataplant_tools.py
 ```
 
+## Outlook
+
+The current setup is a working prototype — two standalone HTML files and a helper script, maintained manually. A few directions worth considering for the longer term:
+
+ - DataPLANT Knowledgebase — either as a dedicated "Tool Overview" page or as an interactive embed. This would make it discoverable for new data stewards alongside existing tutorials and guides.
+ - The scripts could be integrated into a GitHub Action workflow within the nfdi4plants organisation — scheduled to run monthly and automatically opening a PR with updated contributor/tool data.
 
 ## As of
 
 June 2025 — based on public GitHub data from [github.com/nfdi4plants](https://github.com/nfdi4plants)
+
