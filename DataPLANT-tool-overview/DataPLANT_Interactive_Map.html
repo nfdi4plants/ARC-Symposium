@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataPLANT Tools — Interactive Map</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#f0f4f8; color:#1a1a2e; }
+.wrap { padding:16px; max-width:1100px; margin:0 auto; }
+h1 { font-size:18px; font-weight:800; margin-bottom:2px; }
+.sub { font-size:11px; color:#888; margin-bottom:10px; }
+#canvas { position:relative; width:100%; height:660px; border:1px solid #dde1e7; border-radius:10px; overflow:hidden; background:#f8f9fa; }
+svg#arrows { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+.node { position:absolute; border-radius:8px; padding:7px 10px; cursor:grab; box-shadow:0 2px 8px rgba(0,0,0,.15); min-width:140px; max-width:185px; transition:box-shadow .15s; }
+.node:active { cursor:grabbing; box-shadow:0 6px 20px rgba(0,0,0,.25); z-index:999; }
+.node.selected { box-shadow:0 0 0 2.5px white, 0 4px 16px rgba(0,0,0,.3); }
+.node-title { font-size:10.5px; font-weight:700; color:white; line-height:1.2; }
+.node-sub { font-size:8.5px; color:rgba(255,255,255,.8); margin-top:2px; line-height:1.3; }
+.node-people { font-size:7.5px; color:rgba(255,255,255,.6); margin-top:3px; border-top:1px solid rgba(255,255,255,.15); padding-top:3px; }
+.legend { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+.legend-item { display:flex; align-items:center; gap:5px; font-size:10px; color:#666; }
+.legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.panel { background:#fff; border:1.5px solid #dde1e7; border-radius:10px; padding:12px 16px; margin-top:10px; min-height:60px; }
+.panel h2 { font-size:14px; font-weight:700; margin-bottom:3px; }
+.tag { display:inline-block; font-size:9px; font-weight:600; padding:2px 8px; border-radius:20px; margin-bottom:6px; color:#fff; }
+.panel p { font-size:12px; line-height:1.55; color:#444; margin-bottom:6px; }
+.when-list { list-style:none; margin-bottom:8px; }
+.when-list li { font-size:11px; color:#444; padding:1px 0; }
+.when-list li::before { content:"→ "; color:#5b8dd9; font-weight:700; }
+.chips { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:6px; }
+.chip { background:#f8faff; border:1px solid #e2e8f0; border-radius:20px; padding:3px 10px; font-size:11px; }
+.chip b { font-weight:700; }
+.chip s { color:#888; font-size:10px; font-style:normal; }
+.ph { color:#aaa; font-size:12px; text-align:center; padding:14px; }
+.hint { font-size:9.5px; color:#bbb; margin-top:4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>&#127807; DataPLANT Tools — Interactive Map</h1>
+  <p class="sub">Drag nodes freely to arrange &middot; Click a node to see details &middot; Arrows show dependencies</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#3a7d44"></div> ARC Clients</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c0392b"></div> Core Library</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2d6a4f"></div> Standard</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8b5cf6"></div> Annotation</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1d6fa4"></div> Platform</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#555"></div> Export / Publication</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#c46010"></div> Import / ELN</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#333"></div> Docs / Planning</div>
+  </div>
+
+  <div id="canvas"><svg id="arrows"></svg></div>
+  <p class="hint">Tip: Rearrange nodes freely — positions are kept as long as the page is open.</p>
+  <div class="panel" id="panel"><p class="ph">Click on a tool to see details.</p></div>
+</div>
+
+<script>
+var NODES = [
+  { id:"arc-spec",     label:"ARC Specification",     sub:"FAIR Digital Object Standard",       color:"#2d6a4f", group:"standard",
+    people:"Lukas Weil · Kevin Schneider",
+    desc:"Defines the ARC structure, ISA metadata formats and conventions. The foundation for all DataPLANT tools.",
+    when:["Understand why ARCs are structured the way they are","Contribute to the standard"],
+    contacts:[["Lukas Weil","HLWeil","86 Commits"],["Kevin Schneider","kMutagene","33 Commits"]],
+    url:"https://github.com/nfdi4plants/ARC-specification", x:390, y:20 },
+
+  { id:"arctrl",       label:"ARCtrl",                sub:"Core Library · .NET / JS / Python",  color:"#c0392b", group:"core",
+    people:"Lukas Weil · Kevin Frey · Caroline Ott",
+    desc:"Central library used internally by almost all DataPLANT tools. As a data steward you use it indirectly via ARCitect, arc-export, ARCCommander etc.",
+    when:["You use ARCtrl indirectly through most other tools"],
+    contacts:[["Lukas Weil","HLWeil","1138 Commits"],["Kevin Frey","Freymaurer","393 Commits"],["Caroline Ott","caroott","220 Commits"]],
+    url:"https://github.com/nfdi4plants/ARCtrl", x:390, y:270 },
+
+  { id:"arcitect",     label:"ARCitect",              sub:"Desktop GUI (Electron/Vue)",          color:"#3a7d44", group:"clients",
+    people:"Jonas Lukasczyk · Kevin Frey · Dominik Brilhaus",
+    desc:"The main app for data stewards. Create, edit and sync ARCs with the PLANTdataHUB. Swate is integrated.",
+    when:["Create a new ARC","Edit metadata","Upload / download an ARC"],
+    contacts:[["Jonas Lukasczyk","JonasLukasczyk","182 Commits"],["Kevin Frey","Freymaurer","157 Commits"],["Dominik Brilhaus","Brilator","117 Commits"]],
+    url:"https://github.com/nfdi4plants/ARCitect", x:55, y:70 },
+
+  { id:"arcmanager",   label:"ARCManager",            sub:"Web-Browser ARC UI",                 color:"#3a7d44", group:"clients",
+    people:"j-bauer · TetraW · Zerskk",
+    desc:"Manage ARCs in the browser without installation. Lightweight alternative to ARCitect.",
+    when:["No desktop available","Quickly inspect an ARC"],
+    contacts:[["j-bauer","j-bauer","86 Commits"],["TetraW","TetraW","24 Commits"]],
+    url:"https://github.com/nfdi4plants/ARCmanager", x:55, y:165 },
+
+  { id:"arccommander", label:"ARCCommander",          sub:"CLI Tool",                            color:"#3a7d44", group:"clients",
+    people:"Lukas Weil · Oliver Maus · Kevin Schneider",
+    desc:"Command-line tool for power users, scripting and server automation. Predecessor of ARCitect for headless environments.",
+    when:["Automate ARC workflows","Work in server environments without a GUI"],
+    contacts:[["Lukas Weil","HLWeil","310 Commits"],["Oliver Maus","omaus","189 Commits"],["Kevin Schneider","kMutagene","40 Commits"]],
+    url:"https://github.com/nfdi4plants/ARCCommander", x:55, y:260 },
+
+  { id:"arc-vscode",   label:"arc-vs-code",           sub:"VS Code Extension",                  color:"#c46010", group:"clients",
+    people:"Jonas Lukasczyk · Kevin Frey",
+    desc:"ARC management and Swate annotation directly in VS Code. Includes PLANTdataHUB sync.",
+    when:["You already work in VS Code","Manage code and ARC in one window"],
+    contacts:[["Jonas Lukasczyk","JonasLukasczyk",""],["Kevin Frey","Freymaurer",""]],
+    url:"https://github.com/nfdi4plants/arc-vs-code", x:55, y:355 },
+
+  { id:"excel-addin",  label:"Excel Add-In",          sub:"Swate in Microsoft Excel",           color:"#c46010", group:"clients",
+    people:"Kevin Frey · Patrick Blume",
+    desc:"Swate integration for Microsoft Excel. Ontology-driven metadata annotation directly in spreadsheets.",
+    when:["Capture metadata in Excel","Annotate existing spreadsheets"],
+    contacts:[["Kevin Frey","Freymaurer",""],["Patrick Blume","Etschbeijer",""]],
+    url:"https://github.com/nfdi4plants/Swate", x:55, y:450 },
+
+  { id:"swate",        label:"Swate",                 sub:"Metadata Annotation (ISA)",          color:"#8b5cf6", group:"annotation",
+    people:"Kevin Frey · Patrick Blume · Kevin Schneider",
+    desc:"Core annotation tool. Creates ISA-compliant metadata tables using ontology terms. Available as web app and embedded in ARCitect and arc-vs-code.",
+    when:["Capture experiment metadata","Fill in ISA tables","Search for ontology terms"],
+    contacts:[["Kevin Frey","Freymaurer","1520 Commits"],["Patrick Blume","Etschbeijer","551 Commits"],["Kevin Schneider","kMutagene","65 Commits"]],
+    url:"https://swate-alpha.nfdi4plants.org", x:218, y:145 },
+
+  { id:"swate-tmpl",   label:"Swate Templates",       sub:"Template Registry",                  color:"#7c4ddb", group:"annotation",
+    people:"StellaEggels · Patrick Blume · Dominik Brilhaus",
+    desc:"Community-maintained collection of metadata templates for common experimental methods (RNA-Seq, Proteomics, …).",
+    when:["Find a template for your method","Submit a new template"],
+    contacts:[["StellaEggels","StellaEggels","199 Commits"],["Patrick Blume","Etschbeijer","175 Commits"],["Dominik Brilhaus","Brilator","167 Commits"]],
+    url:"https://github.com/nfdi4plants/swate-template-registry", x:218, y:250 },
+
+  { id:"ontology",     label:"nfdi4plants Ontology",  sub:"Controlled Vocabulary",              color:"#6d3fc7", group:"annotation",
+    people:"kdumschott · StellaEggels · Hannah Doerpholz",
+    desc:"Intermediate plant science ontology bridging gaps between CHEBI, GO, PO etc. Provides controlled terms used by Swate.",
+    when:["A term is missing → report it here","Contribute ontology terms"],
+    contacts:[["kdumschott","kdumschott","163 Commits"],["StellaEggels","StellaEggels","106 Commits"],["Hannah Doerpholz","Hannah-Doerpholz","86 Commits"]],
+    url:"https://github.com/nfdi4plants/nfdi4plants_ontology", x:218, y:355 },
+
+  { id:"arcsummary",   label:"ARCSummary",            sub:"Markdown Report Generator",          color:"#666", group:"annotation",
+    people:"Ole Scholz · Lukas Weil",
+    desc:"F# library for generating Markdown summaries from ARC metadata. Produces human-readable reports automatically.",
+    when:["Auto-generate a readable summary of an ARC"],
+    contacts:[["Ole Scholz","olscholz","41 Commits"],["Lukas Weil","HLWeil","16 Commits"]],
+    url:"https://github.com/nfdi4plants/ARCSummary", x:218, y:450 },
+
+  { id:"arcfs",        label:"arcfs-fsspec",          sub:"Python fsspec Adapter",              color:"#555", group:"annotation",
+    people:"TetraW",
+    desc:"Python fsspec adapter for ARCs. Enables access to ARC file systems via standard Python interfaces (Jupyter, pandas, …).",
+    when:["Access ARC data from Python / Jupyter notebooks"],
+    contacts:[["TetraW","TetraW","12 Commits"]],
+    url:"https://github.com/nfdi4plants/arcfs-fsspec", x:218, y:535 },
+
+  { id:"datahub",      label:"PLANTdataHUB",          sub:"GitLab · git.nfdi4plants.org",       color:"#1d6fa4", group:"platform",
+    people:"j-bauer · TetraW · Zerskk",
+    desc:"Central GitLab platform for collaborative ARC storage, versioning and sharing. CI/CD pipelines, quality checks and federated instances (TRR356, CEPLAS, …).",
+    when:["Share an ARC with colleagues","View version history","Run CI/CD quality checks"],
+    contacts:[["j-bauer","j-bauer","86 Commits"],["TetraW","TetraW","24 Commits"],["Zerskk","Zerskk","14 Commits"]],
+    url:"https://git.nfdi4plants.org", x:595, y:70 },
+
+  { id:"arcsearch",    label:"ARCSearch",             sub:"Metadata Search (federated)",        color:"#2a6496", group:"platform",
+    people:"DataHUB Team",
+    desc:"Metadata search service across all federated PLANTdataHUB instances. Enables FAIR discoverability.",
+    when:["Find similar datasets","Check if data already exists"],
+    contacts:[["DataHUB Team","nfdi4plants",""]],
+    url:"https://www.nfdi4plants.org/arc-data-hub/", x:595, y:195 },
+
+  { id:"archigator",   label:"archigator-frontend",   sub:"ARC Validation & QA",                color:"#777", group:"export",
+    people:"Zerskk",
+    desc:"Validates ARCs against the ARC Specification before publication. Returns structured error messages.",
+    when:["Validate an ARC before publishing","Identify format errors"],
+    contacts:[["Zerskk","Zerskk","14 Commits"]],
+    url:"https://github.com/nfdi4plants/archigator-frontend", x:595, y:300 },
+
+  { id:"arc-ro-crate", label:"ARC RO-Crate Profile",   sub:"Standard / Profile",                color:"#2d6a4f", group:"standard",
+    people:"Lukas Weil · Kevin Schneider",
+    desc:"Defines how an ARC is serialised as an RO-Crate — the standard exchange format used when exporting to external repositories and ELIXIR infrastructure.",
+    when:["Understand how ARCs map to RO-Crate","Reference when working with arc-export output","Contribute to the profile definition"],
+    contacts:[["Lukas Weil","HLWeil","3 Commits"],["Kevin Schneider","kMutagene","2 Commits"]],
+    url:"https://github.com/nfdi4plants/arc-ro-crate-profile", x:595, y:595 },
+
+  { id:"arc-export",   label:"arc-export",            sub:"ISA-JSON / RO-Crate Export",         color:"#555", group:"export",
+    people:"Lukas Weil · Kevin Schneider · Caroline Ott",
+    desc:"Containerised tool for exporting ARCs to ISA-JSON and RO-Crate formats. Bridge to ELIXIR and other external repositories.",
+    when:["Prepare an ARC for an external repository","Establish interoperability"],
+    contacts:[["Lukas Weil","HLWeil","49 Commits"],["Kevin Schneider","kMutagene","45 Commits"],["Caroline Ott","caroott","4 Commits"]],
+    url:"https://github.com/nfdi4plants/arc-export", x:595, y:400 },
+
+  { id:"archive",      label:"ARChive",               sub:"Publication & DOI",                  color:"#1d6fa4", group:"export",
+    people:"DataHUB Team",
+    desc:"Publishes ARCs permanently with a DOI. Long-term archiving as FAIR Digital Objects — citable and findable.",
+    when:["Publishing a paper → publish the data too","A DOI for the dataset is needed"],
+    contacts:[["DataHUB Team","nfdi4plants",""]],
+    url:"https://www.nfdi4plants.org/arc-data-hub/", x:595, y:500 },
+
+  { id:"elab2arc",     label:"elab2ARC",              sub:"eLabFTW → ARC Converter",            color:"#c46010", group:"import",
+    people:"Xiao-Ran Zhou · Sabrina Zander",
+    desc:"Converts experiments from the eLabFTW electronic lab notebook into ARC-compliant structures. Bridge between ELN workflows and DataPLANT.",
+    when:["Convert eLabFTW experiments to ARC format"],
+    contacts:[["Xiao-Ran Zhou","xiaoranzhou","215 Commits"],["Sabrina Zander","SabrinaZander","6 Commits"]],
+    url:"https://github.com/nfdi4plants/elab2ARC", x:390, y:480 },
+
+  { id:"metadataquiz", label:"metadataquiz",          sub:"Metadata Learning Quiz",             color:"#c46010", group:"import",
+    people:"Xiao-Ran Zhou · Sabrina Zander",
+    desc:"Interactive quiz on metadata concepts and ARC basics. Useful for training sessions and onboarding.",
+    when:["Test your knowledge","Liven up a training session"],
+    contacts:[["Xiao-Ran Zhou","xiaoranzhou","40 Commits"],["Sabrina Zander","SabrinaZander","1 Commit"]],
+    url:"https://github.com/nfdi4plants/metadataquiz", x:390, y:570 },
+
+  { id:"knowledgebase",label:"Knowledgebase",         sub:"Documentation & Tutorials",          color:"#333", group:"docs",
+    people:"Dominik Brilhaus · Kevin Frey · lewir101",
+    desc:"First stop for questions. Tutorials, how-tos and explanations for all DataPLANT tools.",
+    when:["How does X work?","Look up tool documentation","Onboard new team members"],
+    contacts:[["Dominik Brilhaus","Brilator","1993 Commits"],["Kevin Frey","Freymaurer","147 Commits"],["lewir101","lewir101","105 Commits"]],
+    url:"https://nfdi4plants.org/nfdi4plants.knowledgebase/", x:790, y:290 },
+
+  { id:"training",     label:"training-material",     sub:"Workshops & Course Material",        color:"#444", group:"docs",
+    people:"Dominik Brilhaus · toriapetrova · lewir101",
+    desc:"Slides, exercises and course materials from DataPLANT workshops and training events.",
+    when:["Prepare a workshop","Find learning material for data stewards"],
+    contacts:[["Dominik Brilhaus","Brilator","1507 Commits"],["toriapetrova","toriapetrova","111 Commits"],["lewir101","lewir101","105 Commits"]],
+    url:"https://github.com/nfdi4plants/training-material", x:790, y:400 },
+
+  { id:"dataplan",     label:"DataPLAN",              sub:"DMP Generator",                      color:"#1d6fa4", group:"docs",
+    people:"Xiao-Ran Zhou",
+    desc:"Generates Data Management Plans (DMPs) according to DFG/BMBF requirements. Standalone tool, complementary to the ARC workflow.",
+    when:["Writing a grant proposal → DMP needed","Applying for DFG/BMBF funding"],
+    contacts:[["Xiao-Ran Zhou","xiaoranzhou","482 Commits"]],
+    url:"https://dmpg.nfdi4plants.org", x:790, y:490 },
+
+  { id:"delight",      label:"Delight",               sub:"TS Tool (in development)",           color:"#888", group:"docs",
+    people:"Kevin Frey · Dennis Psaroudakis",
+    desc:"Newest tool in the DataPLANT ecosystem (TypeScript). Still in active development — likely a UI/frontend component for ARC workflows.",
+    when:["Keep an eye on this — more details coming soon"],
+    contacts:[["Kevin Frey","Freymaurer","22 Commits"],["Dennis Psaroudakis","Thyra","6 Commits"]],
+    url:"https://github.com/nfdi4plants/Delight", x:790, y:580 },
+];
+
+var EDGES = [
+  ["arcitect","arctrl"],["arcmanager","arctrl"],["arccommander","arctrl"],
+  ["arc-vscode","swate"],["excel-addin","swate"],["arcitect","swate"],
+  ["arctrl","arc-spec"],
+  ["swate","arctrl"],["swate","swate-tmpl"],["swate-tmpl","ontology"],
+  ["arcsummary","arctrl"],["arcfs","arctrl"],
+  ["arctrl","arc-export"],
+  ["datahub","arcsearch"],["datahub","archive"],["datahub","archigator"],
+  ["arcitect","datahub"],["arcmanager","datahub"],["arc-vscode","datahub"],
+  ["elab2arc","arctrl"],["elab2arc","datahub"],
+  ["arc-ro-crate","arc-export"],
+  ["arc-export","archive"],["archigator","archive"],
+];
+
+var canvas = document.getElementById("canvas");
+var svg    = document.getElementById("arrows");
+var panel  = document.getElementById("panel");
+var nodeEls = {};
+
+NODES.forEach(function(n) {
+  var el = document.createElement("div");
+  el.className = "node";
+  el.id = "node-" + n.id;
+  el.style.cssText = "left:" + n.x + "px;top:" + n.y + "px;background:" + n.color + ";";
+  el.innerHTML = '<div class="node-title">' + n.label + '</div>' +
+    '<div class="node-sub">' + n.sub + '</div>' +
+    '<div class="node-people">' + n.people + '</div>';
+  canvas.appendChild(el);
+  nodeEls[n.id] = el;
+  makeDraggable(el, n);
+  el.addEventListener("click", function(){ showPanel(n); });
+});
+
+function getCenter(id) {
+  var el = nodeEls[id];
+  if (!el) return {x:0,y:0};
+  return { x: el.offsetLeft + el.offsetWidth/2, y: el.offsetTop + el.offsetHeight/2 };
+}
+
+function redrawArrows() {
+  var lines = EDGES.map(function(e) {
+    var ca = getCenter(e[0]), cb = getCenter(e[1]);
+    var dx = cb.x-ca.x, dy = cb.y-ca.y;
+    var len = Math.sqrt(dx*dx+dy*dy)||1;
+    var pad = 10;
+    var x1 = ca.x+dx/len*pad, y1 = ca.y+dy/len*pad;
+    var x2 = cb.x-dx/len*pad, y2 = cb.y-dy/len*pad;
+    return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#arr)" opacity="0.55"/>';
+  });
+  svg.innerHTML = '<defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#94a3b8"/></marker></defs>' + lines.join("");
+}
+
+function makeDraggable(el, nodeData) {
+  var ox, oy, startX, startY, moved;
+  el.addEventListener("mousedown", function(e) {
+    e.preventDefault(); moved = false;
+    ox = el.offsetLeft; oy = el.offsetTop;
+    startX = e.clientX; startY = e.clientY;
+    el.style.zIndex = 100;
+    function onMove(e) {
+      var dx = e.clientX-startX, dy = e.clientY-startY;
+      if (Math.abs(dx)+Math.abs(dy) > 3) moved = true;
+      el.style.left = Math.max(0, Math.min(canvas.offsetWidth-el.offsetWidth, ox+dx)) + "px";
+      el.style.top  = Math.max(0, Math.min(canvas.offsetHeight-el.offsetHeight, oy+dy)) + "px";
+      redrawArrows();
+    }
+    function onUp() { el.style.zIndex=""; document.removeEventListener("mousemove",onMove); document.removeEventListener("mouseup",onUp); }
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onUp);
+  });
+  el.addEventListener("touchstart", function(e) {
+    e.preventDefault(); moved = false;
+    var t = e.touches[0];
+    ox = el.offsetLeft; oy = el.offsetTop;
+    startX = t.clientX; startY = t.clientY;
+    el.style.zIndex = 100;
+    function onMove(e) {
+      var t = e.touches[0], dx = t.clientX-startX, dy = t.clientY-startY;
+      if (Math.abs(dx)+Math.abs(dy) > 3) moved = true;
+      el.style.left = Math.max(0, Math.min(canvas.offsetWidth-el.offsetWidth, ox+dx)) + "px";
+      el.style.top  = Math.max(0, Math.min(canvas.offsetHeight-el.offsetHeight, oy+dy)) + "px";
+      redrawArrows();
+    }
+    function onUp() { el.style.zIndex=""; document.removeEventListener("touchmove",onMove); document.removeEventListener("touchend",onUp); }
+    document.addEventListener("touchmove", onMove, {passive:false});
+    document.addEventListener("touchend", onUp);
+  }, {passive:false});
+}
+
+function showPanel(n) {
+  document.querySelectorAll(".node").forEach(function(e){ e.classList.remove("selected"); });
+  document.getElementById("node-"+n.id).classList.add("selected");
+  var whenHtml = (n.when||[]).length ? '<div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">When do I use this?</div><ul class="when-list">' + n.when.map(function(w){ return "<li>"+w+"</li>"; }).join("") + "</ul>" : "";
+  var chips = (n.contacts||[]).map(function(c){ return '<div class="chip"><b>'+c[0]+'</b> <span>@'+c[1]+(c[2]?" · "+c[2]:"")+' </span></div>'; }).join("");
+  panel.innerHTML = '<h2>'+n.label+'</h2>' +
+    '<span class="tag" style="background:'+n.color+'">'+n.group+'</span>' +
+    '<p>'+n.desc+'</p>' +
+    whenHtml +
+    '<div style="font-size:10px;font-weight:700;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Responsible / Contact</div>' +
+    '<div class="chips">'+chips+'</div>' +
+    '<p style="font-size:10px;margin-top:4px"><a href="'+n.url+'" target="_blank" style="color:#5b8dd9">'+n.url+'</a></p>';
+}
+
+redrawArrows();
+window.addEventListener("resize", redrawArrows);
+</script>
+</body>
+</html>
