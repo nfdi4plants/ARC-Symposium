@@ -164,6 +164,13 @@ var NODES = [
     contacts:[["Zerskk","Zerskk","14 Commits"]],
     url:"https://github.com/nfdi4plants/archigator-frontend", x:595, y:300 },
 
+  { id:"arc-ro-crate", label:"ARC RO-Crate Profile",   sub:"Standard / Profile",                color:"#2d6a4f", group:"standard",
+    people:"Lukas Weil · Kevin Schneider",
+    desc:"Defines how an ARC is serialised as an RO-Crate — the standard exchange format used when exporting to external repositories and ELIXIR infrastructure.",
+    when:["Understand how ARCs map to RO-Crate","Reference when working with arc-export output","Contribute to the profile definition"],
+    contacts:[["Lukas Weil","HLWeil","3 Commits"],["Kevin Schneider","kMutagene","2 Commits"]],
+    url:"https://github.com/nfdi4plants/arc-ro-crate-profile", x:595, y:595 },
+
   { id:"arc-export",   label:"arc-export",            sub:"ISA-JSON / RO-Crate Export",         color:"#555", group:"export",
     people:"Lukas Weil · Kevin Schneider · Caroline Ott",
     desc:"Containerised tool for exporting ARCs to ISA-JSON and RO-Crate formats. Bridge to ELIXIR and other external repositories.",
@@ -231,6 +238,7 @@ var EDGES = [
   ["datahub","arcsearch"],["datahub","archive"],["datahub","archigator"],
   ["arcitect","datahub"],["arcmanager","datahub"],["arc-vscode","datahub"],
   ["elab2arc","arctrl"],["elab2arc","datahub"],
+  ["arc-ro-crate","arc-export"],
   ["arc-export","archive"],["archigator","archive"],
 ];
 
