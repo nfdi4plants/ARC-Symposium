@@ -7,10 +7,16 @@ PatchVersion: 0
 Publish: false
 Summary: Validates that ontology/CV annotations in ARC ISA tables are complete, well-formed, declared, and resolvable.
 Description: |
-  Checks ontology term annotations on Characteristic/Parameter/Factor/Component building
-  blocks across all study and assay tables. Offline: source/accession pairing,
-  well-formedness, source declaration, prefix consistency, free-text coverage. Online
-  (when the TIB Terminology Service is reachable): accession resolution and label match.
+  Checks the quality of ontology / controlled-vocabulary annotations on
+  Characteristic/Parameter/Factor/Component building blocks across all study and assay
+  tables. It verifies BOTH that used annotations are well-formed and structurally sound
+  (source/accession pairing, accession well-formedness) AND that, when ontology terms are
+  used, they resolve to real terms (online accession resolution and label match against
+  the TIB Terminology Service, with EBI OLS fallback). It does not require every value to
+  be annotated - free text is permitted, so coverage is only a warning. source_declared
+  and prefix_consistency are reported as non-critical warnings, since the Investigation
+  ONTOLOGY SOURCE REFERENCE section is not a settled convention and an ontology may host
+  terms whose id prefix differs from its source name.
 Author:
   - FullName: Mohamed Abouzid
     Email: m.abouzid@fz-juelich.de
@@ -149,27 +155,35 @@ def check_wellformed(occ):
 
 
 def check_source_declared(occ, declared):
+    # Non-critical (warning): the Investigation ONTOLOGY SOURCE REFERENCE section is not a
+    # reliably-populated convention across the ARC community (it is functionally an ISA
+    # artifact), so a missing declaration must not gate an ARC. See README friction note.
     if not occ.source:
-        return Finding("source_declared", "error", "skipped", "no source", occ.location)
+        return Finding("source_declared", "warning", "skipped", "no source", occ.location)
     declared_lower = {d.lower() for d in declared}
     if occ.source.lower() in declared_lower:
-        return _pass("source_declared", "error", occ)
-    return Finding("source_declared", "error", "failed",
+        return _pass("source_declared", "warning", occ)
+    return Finding("source_declared", "warning", "failed",
                    f"Term Source REF '{occ.source}' is not declared in the "
                    f"investigation ONTOLOGY SOURCE REFERENCE section.",
                    occ.location)
 
 
 def check_prefix_consistency(occ):
+    # Non-critical (warning): an ontology may legitimately host terms whose id prefix
+    # differs from its Term Source REF (e.g. the MS / psi-ms CV hosts PEFF: ids, so
+    # source=MS with accession=PEFF:0000002 is a real, valid term). A mismatch is a useful
+    # signal for genuine typos, but must not gate an ARC.
     if not (occ.source and occ.accession):
-        return Finding("prefix_consistency", "error", "skipped", "needs both", occ.location)
+        return Finding("prefix_consistency", "warning", "skipped", "needs both", occ.location)
     if _is_iri(occ.accession):
-        return Finding("prefix_consistency", "error", "skipped", "iri accession", occ.location)
+        return Finding("prefix_consistency", "warning", "skipped", "iri accession", occ.location)
     prefix = occ.accession.split(":", 1)[0]
     if prefix.lower() == occ.source.lower():
-        return _pass("prefix_consistency", "error", occ)
-    return Finding("prefix_consistency", "error", "failed",
-                   f"Accession prefix '{prefix}' does not match Term Source REF '{occ.source}'.",
+        return _pass("prefix_consistency", "warning", occ)
+    return Finding("prefix_consistency", "warning", "failed",
+                   f"Accession prefix '{prefix}' does not match Term Source REF '{occ.source}' "
+                   f"(may be legitimate for ontologies that host foreign-prefix terms).",
                    occ.location)
 
 

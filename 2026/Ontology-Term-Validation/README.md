@@ -54,8 +54,8 @@ annotation in an ARC into a uniform record and runs **seven checks** across two 
 |---|-------|------|----------|------------------|
 | 1 | `pairing` | offline | error | Term Source REF and Term Accession Number are either both present or both absent |
 | 2 | `wellformed` | offline | error | the accession is a valid `PREFIX:LOCAL` id or IRI |
-| 3 | `source_declared` | offline | error | the Term Source REF is declared in the Investigation ONTOLOGY SOURCE REFERENCE section |
-| 4 | `prefix_consistency` | offline | error | the accession prefix matches its Term Source REF |
+| 3 | `source_declared` | offline | warning | the Term Source REF is declared in the Investigation ONTOLOGY SOURCE REFERENCE section |
+| 4 | `prefix_consistency` | offline | warning | the accession prefix matches its Term Source REF |
 | 5 | `coverage` | offline | warning | flags free-text values that carry no ontology annotation |
 | 6 | `resolves` | online | error | the accession actually exists in a terminology service |
 | 7 | `label_match` | online | warning | the service's canonical label matches the annotation name |
@@ -89,6 +89,19 @@ The package emits the registry's standard three-file result contract into
   obo_id query silently fails for IRIs. → Accessions are **normalized** (OBO-style IRI →
   prefixed obo_id) before querying.
 
+- **The ONTOLOGY SOURCE REFERENCE section is not a settled convention, and prefixes can
+  legitimately cross namespaces** (raised in review by @HLWeil and @Freymaurer). Two
+  consequences shaped the final severity mapping:
+  - Use of the Investigation *ONTOLOGY SOURCE REFERENCE* section has been
+    [debated repeatedly](https://github.com/nfdi4plants/ARCtrl/issues/533) and never
+    settled; it is functionally an ISA artifact that many valid ARCs leave empty. Gating
+    on it would penalise legitimate ARCs. → **`source_declared` is a warning, not an
+    error.**
+  - An ontology may host terms whose id prefix differs from its source name — e.g. the
+    PSI-MS CV (`MS`) also hosts `PEFF:` ids, so `Term Source REF = MS` with
+    `Term Accession Number = PEFF:0000002` is a real, valid term. → **`prefix_consistency`
+    is a warning, not an error**, still surfacing likely typos without gating.
+
 ## Technical Details on Implementation
 
 - **Language / packaging:** one self-contained Python file
@@ -116,14 +129,20 @@ The package emits the registry's standard three-file result contract into
 ### Validated against a real ARC
 
 Run against the *Geobacillus thermoleovorans* ARC, the package surfaced concrete,
-correctly-located findings: ~287 `source_declared` errors (the ARC declares no ontology
+correctly-located findings: ~287 `source_declared` findings (the ARC declares no ontology
 sources at all), 119 free-text `coverage` warnings, and a handful of genuinely
 unresolvable accessions - the non-canonical `EFO:EFO_0005061` and
 `MICRO_MICRO_000052`, and `MIAPPE:0079` (MIAPPE is not hosted by TIB or OLS).
 Developing the online tier on this ARC also caught a real false-negative class:
 NCBITaxon accessions stored as IRIs were initially queried against the wrong field,
 producing ~250 spurious "does not resolve" errors; the IRI-normalization + OLS-fallback
-fix reduced the total error count from **542 to 294**, leaving only true findings.
+fix removed those, leaving only true findings.
+
+Note: following review, `source_declared` and `prefix_consistency` are now **warnings**
+(non-critical), so on this ARC the ~287 missing-declaration findings no longer count as
+critical errors - the only remaining critical (`error`-severity) findings are the genuine
+unresolvable accessions above. This keeps the package from gating ARCs on an unsettled
+convention while still reporting the signal.
 
 ## Automation / Enforcement
 
