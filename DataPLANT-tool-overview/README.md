@@ -1,3 +1,11 @@
+---
+authors:
+  - name: Sabrina Zander
+    orcid: 0009-0000-4569-6126
+    affiliation: MibiNet
+  
+---
+
 # DataPLANT Tool Overview
 
 Interactive HTML reference pages for the [DataPLANT](https://www.nfdi4plants.org) tool ecosystem, aimed at **new data stewards and collaborators** who want to understand which tools exist, what they do, and who to contact.
