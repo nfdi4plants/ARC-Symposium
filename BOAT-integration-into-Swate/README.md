@@ -40,7 +40,7 @@ With the growing scope of existing tool in the dataPLANT environment, having eve
 
 The main idea is to create a button inside the left sidebar with a self-explanatory icon.
 
-![alt text](\images\button.png)
+![BOAT button in sidebar](images/button.png)
 
 The button opens BOAT on the right side, which is the main view side.
 
