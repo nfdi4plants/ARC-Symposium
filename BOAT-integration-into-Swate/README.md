@@ -36,19 +36,15 @@ As a main project of the ARC-Symposium 2026, the elements of [BOAT](https://gith
 
 With the growing scope of existing tool in the dataPLANT environment, having every tool seperated from each other can result in a higher workload for the user, since they have to switch apps and have to search which tool is needed for a specific task. With the ARCitect, user were able to work on ARCS and alternate Table using Swate and with new component [Contigo](https://github.com/nfdi4plants/ARC-Symposium/tree/main/Contigo) , user can handle the provenance of their tables directly in the new Swate app. To complete the picture, the next step is to integrate BOAT as a usbale component directly inside the Swate app. With that, user can annotate new processes directly out of their free text protocol and append their tables with it, with no need of leaving the Swate app.
 
-## Concept (mock up)
+## Concept
 
 The main idea is to create a button inside the left sidebar with a self-explanatory icon.
 
-(Bild)
+![alt text](\images\button.png)
 
 The button opens BOAT on the right side, which is the main view side.
 
-(Bild)
-
 Upload, annotation inside the free text protocol, the contextmenu aswell as adding ontologies works the same way as they do in the standalone web app. The download however, will be replaced with a logic which enables the user to add the annotated process as a table to an existing folder inside their ARC in which they are working on currently in the Swate app. 
-
-(Bild)
 
 ## Implementation
 
