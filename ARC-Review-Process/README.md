@@ -12,11 +12,17 @@ authors:
     orcid: https://orcid.org/0000-0001-9021-3197
     affiliation: 2
     role: Reviewer
+  - name: Sabrina Zander
+    orcid: https://orcid.org/0009-0000-4569-6126
+    affiliation: 3
+    role: Reviewer
 affiliations:
   - name: DataPLANT, eScience Department, University of Freiburg, Freiburg im Breisgau, Germany; Office for Research, University Development Department, RPTU University Kaiserslautern-Landau, Kaiserslautern, Germany
     index: 1
   - name: Cluster of Excellence on Plant Sciences (CEPLAS), Faculty of Mathematics and Natural Science, Heinrich Heine University Düsseldorf, Düsseldorf, Germany
     index: 2
+  - name: MibiNet, Faculty of Mathematics and Natural Science, Heinrich Heine University Düsseldorf, Düsseldorf, Germany
+    index: 3
 date: 25 June 2026
 ---
 
